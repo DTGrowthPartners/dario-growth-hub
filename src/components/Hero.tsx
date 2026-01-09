@@ -1,7 +1,6 @@
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { BackgroundBeams } from '@/components/BackgroundBeams';
 import heroImage from '@/assets/dario-about.jpg';
 
@@ -11,15 +10,15 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="relative min-h-screen bg-background overflow-hidden">
+    <section id="inicio" className="relative h-[80vh] bg-background overflow-hidden">
       <BackgroundBeams className="absolute inset-0 z-0" />
 
-      <div className="relative z-10 min-h-screen flex items-center justify-center">
+      <div className="relative z-10 h-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-6 lg:gap-16">
           {/* Content */}
           <div className="text-center">
-            <h1 className="text-[1.75rem] leading-tight sm:text-3xl md:text-5xl lg:text-6xl font-bold text-foreground sm:leading-tight mb-8 sm:mb-4 px-6 sm:px-0">
-              Escalo negocios<br />con estrategia, sistemas y ejecución.
+            <h1 className="text-[1.25rem] leading-tight sm:text-xl md:text-3xl lg:text-4xl font-bold text-foreground sm:leading-tight mb-8 sm:mb-4 px-6 sm:px-0">
+              Acelero el crecimiento de tu empresa con estrategia, sistemas y ejecución<br className="hidden sm:block" /> orientados a resultados
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0">
               Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="underline-hover">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
@@ -32,7 +31,6 @@ const Hero = () => {
                 className="bg-primary hover:bg-primary/90 text-primary-foreground text-base sm:text-base px-8 py-3 sm:px-8 sm:py-3 w-full max-w-[320px] sm:w-auto sm:max-w-none"
               >
                 ¡Hablemos Hoy!
-                <FontAwesomeIcon icon={faWhatsapp} className="ml-2 h-5 w-5 sm:h-7 sm:w-7" />
                 <RippleButtonRipples />
               </RippleButton>
               <RippleButton

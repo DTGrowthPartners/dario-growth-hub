@@ -4,7 +4,6 @@ import * as React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 export interface WorkFlipCardData {
   icon: LucideIcon;
@@ -106,7 +105,6 @@ export function WorkFlipCard({ data }: WorkFlipCardProps) {
             className="flex items-center gap-2 px-3 py-1.5 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium text-sm transition-colors"
           >
             Conversar
-            <FontAwesomeIcon icon={faWhatsapp} className="ml-2 w-4 h-4" />
             <ArrowRight className="w-2.5 h-2.5" />
           </button>
         </div>

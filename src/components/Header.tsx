@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { Button } from '@/components/ui/button';
 import logoImage from '@/assets/logo-dairo-tras.png';
 
@@ -101,7 +100,6 @@ const Header = () => {
                 rel="noopener noreferrer"
               >
                 ¡Hablemos Hoy!
-                <FontAwesomeIcon icon={faWhatsapp} className="ml-2 h-5 w-5" />
               </a>
             </Button>
           </div>
@@ -129,7 +127,6 @@ const Header = () => {
                     rel="noopener noreferrer"
                     onClick={handleNavClick}
                   >
-                    <FontAwesomeIcon icon={faWhatsapp} className="mr-2 h-7 w-7" />
                     ¡Hablemos Hoy!
                   </a>
                 </Button>

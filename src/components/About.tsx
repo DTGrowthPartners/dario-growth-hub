@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import darioImg1 from '../assets/dario-about-desenfoque.png';
 import darioImg2 from '../assets/DSC03678.jpg';
 
@@ -105,7 +104,6 @@ const About = () => {
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors duration-200"
               >
                 Contactar por WhatsApp
-                <FontAwesomeIcon icon={faWhatsapp} className="ml-2 h-5 w-5" />
               </a>
             </div>
           </div>
