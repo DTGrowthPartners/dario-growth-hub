@@ -33,16 +33,7 @@ const About = () => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           {/* Title - Mobile */}
           <div className="order-1 lg:hidden text-center">
-            <h2
-              className="text-xl font-bold tracking-wide uppercase mb-3 bg-clip-text text-transparent"
-              style={{
-                backgroundImage: 'linear-gradient(90deg, hsl(0 0% 70%) 0%, hsl(0 0% 70%) 40%, hsl(211 98% 46%) 50%, hsl(0 0% 70%) 60%, hsl(0 0% 70%) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                animation: 'shimmer 6.5s linear infinite'
-              }}
-            >
+            <h2 className="text-xl font-bold tracking-wide uppercase mb-3 text-primary">
               ¿Cómo te puedo ayudar?
             </h2>
           </div>
@@ -53,25 +44,14 @@ const About = () => {
               alt="Dario Traslaviña"
               className="w-full h-auto object-cover"
               style={{
-                objectPosition: 'center center',
-                transform: 'scale(1.15) translateX(-15%)',
-                transformOrigin: 'center center'
+                objectPosition: '35% center'
               }}
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(0deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(180deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%)]"></div>
           </div>
           {/* Content - Mobile first */}
           <div className="order-3 lg:order-1 lg:flex-1">
-            <h2
-              className="hidden lg:block text-xl lg:text-2xl font-bold tracking-wide uppercase mb-6 bg-clip-text text-transparent"
-              style={{
-                backgroundImage: 'linear-gradient(90deg, hsl(0 0% 70%) 0%, hsl(0 0% 70%) 40%, hsl(211 98% 46%) 50%, hsl(0 0% 70%) 60%, hsl(0 0% 70%) 100%)',
-                backgroundSize: '200% auto',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                animation: 'shimmer 6.5s linear infinite'
-              }}
-            >
+            <h2 className="hidden lg:block text-xl lg:text-2xl font-bold tracking-wide uppercase mb-6 text-primary">
               ¿Cómo te puedo ayudar?
             </h2>
 
@@ -142,7 +122,7 @@ const About = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="mt-10 lg:mt-12">
+            <div className="mt-10 lg:mt-12 text-center lg:text-left">
               <a
                 href="https://api.whatsapp.com/send/?phone=573007189383&text=Hola%2C%20Dairo.%20Te%20contacto%20desde%20tu%20sitio%20web%20y%20estoy%20interesado%20en%20una%20consultor%C3%ADa%20sobre%20%5Bespecificar%20tema%5D&type=phone_number&app_absent=0"
                 target="_blank"
