@@ -1,5 +1,4 @@
 import { ExternalLink, Users, Target, Zap, BarChart } from 'lucide-react';
-import { HoleBackground } from '@/components/ui/hole-background';
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { HoverEffect } from '@/components/ui/card-hover-effect';
 
@@ -28,11 +27,11 @@ const featureItems = [
 
 const DTGrowthPartners = () => {
   return (
-    <section id="dt-growth" className="relative w-full min-h-screen flex items-center py-16 lg:py-24 overflow-hidden bg-[#0A0A0A]">
+    <section id="dt-growth" className="relative w-full flex items-center py-16 lg:py-20 overflow-hidden bg-[#0A0A0A]">
       {/* Background Image Container */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0">
         <img
-          src="/src/assets/DT-GROWTH-LOGO-DYCI6Arf.png"
+          src="/images/DT-GROWTH-LOGO-DYCI6Arf.png"
           alt="DT Growth Partners Background"
           className="max-w-[120%] lg:max-w-[60%] h-auto lg:h-auto opacity-5 rotate-90 lg:rotate-0 max-h-[85vh] lg:max-h-none object-contain"
         />
