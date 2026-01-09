@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import TrustedBrands from '@/components/TrustedBrands';
 import About from '@/components/About';
-import HowIWork from '@/components/HowIWork';
 import Blog from '@/components/Blog';
 import DTGrowthPartners from '@/components/DTGrowthPartners';
 import Contact from '@/components/Contact';
@@ -30,7 +29,6 @@ const Index = () => {
         <Hero />
         <TrustedBrands />
         <About />
-        <HowIWork />
         <Blog />
         <DTGrowthPartners />
         <Contact />

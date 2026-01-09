@@ -22,14 +22,14 @@ const Hero = () => {
               con estrategia, sistemas y ejecución<br />
               orientados a resultados reales
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
+            <p className="text-[0.95rem] sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
               Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="shimmer-text">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-3 items-center justify-center px-4 sm:px-0">
               <RippleButton
                 size="default"
-                onClick={() => window.open('https://api.whatsapp.com/send/?phone=14158702322&text=Hola!%20Quiero%20agendar%20una%20consultor%C3%ADa.&type=phone_number&app_absent=0', '_blank')}
+                onClick={() => window.open('https://api.whatsapp.com/send/?phone=573007189383&text=Hola%2C%20Dairo.%20Te%20contacto%20desde%20tu%20sitio%20web%20y%20estoy%20interesado%20en%20una%20consultor%C3%ADa%20sobre%20%5Bespecificar%20tema%5D&type=phone_number&app_absent=0', '_blank')}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground text-base sm:text-base px-8 py-3 sm:px-8 sm:py-3 w-full max-w-[320px] sm:w-auto sm:max-w-none"
               >
                 ¡Hablemos Hoy!

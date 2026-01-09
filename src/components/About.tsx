@@ -49,7 +49,7 @@ const About = () => {
           {/* Title - Mobile */}
           <div className="order-1 lg:hidden text-center">
             <p className="text-primary font-semibold text-base tracking-wider uppercase mb-3">
-              Experiencia
+              Cómo te puedo ayudar
             </p>
           </div>
           {/* Image - Mobile */}
@@ -60,7 +60,7 @@ const About = () => {
           {/* Content - Mobile first */}
           <div className="order-3 lg:order-1 lg:flex-1">
             <p className="hidden lg:block text-primary font-semibold text-sm tracking-wider uppercase mb-3">
-              Experiencia
+              Cómo te puedo ayudar
             </p>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-6 lg:mb-6 leading-tight -mt-12 lg:mt-0 text-center lg:text-left">
               Operador de crecimiento, no solo consultor
@@ -75,7 +75,7 @@ const About = () => {
                 <li>• Diseño de sistemas de crecimiento, no "hacks" ni experimentos sueltos.</li>
                 <li>• Ejecución y optimización continua, con foco en métricas que importan.</li>
               </ul>
-              <h3 className="text-xl lg:text-2xl font-semibold text-foreground mt-8 lg:mt-8 mb-4">Experiencia en números</h3>
+              <h3 className="text-xl lg:text-2xl font-semibold text-foreground mt-8 lg:mt-8 mb-4">Cómo te puedo ayudar en números</h3>
             </div>
 
             {/* Stats */}
