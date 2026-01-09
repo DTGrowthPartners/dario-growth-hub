@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export interface WorkFlipCardData {
   icon: LucideIcon;

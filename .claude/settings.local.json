@@ -4,7 +4,12 @@
       "Bash(npx shadcn@latest add @animate-ui/components-community-flip-card)",
       "Bash(npm install:*)",
       "Bash(copy \"c:\\\\Users\\\\Edgar\\\\OneDrive\\\\Escritorio\\\\dario-growth-hub-main\\\\src\\\\assets\\\\logo-dario.png\" \"c:\\\\Users\\\\Edgar\\\\OneDrive\\\\Escritorio\\\\dario-growth-hub-main\\\\public\\\\favicon.png\")",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(for file in src/components/ui/*.tsx)",
+      "Bash(do)",
+      "Bash(basename:*)",
+      "Bash(done)",
+      "Bash(ls:*)"
     ]
   }
 }

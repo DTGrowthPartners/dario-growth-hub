@@ -1,5 +1,3 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import darioImg from '../assets/dario-about-desenfoque.png';
 
 const stats = [

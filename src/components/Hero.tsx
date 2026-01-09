@@ -1,8 +1,7 @@
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BackgroundBeams } from '@/components/BackgroundBeams';
-import heroImage from '@/assets/dario-about.jpg';
 
 const Hero = () => {
   const handleScrollToContact = () => {
