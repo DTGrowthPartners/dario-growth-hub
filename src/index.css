@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dario Traslaviña Design System
+   Colors: #0273E8 (blue), #FAFAFA (white), #0A0A0A (black), #121212 (dark gray)
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Primary brand blue: #0273E8 */
+    --primary: 211 98% 46%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Background black: #0A0A0A */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    /* Card styling */
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Secondary - dark gray */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    /* Accent - same as primary for CTAs */
+    --accent: 211 98% 46%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 211 98% 46%;
+
+    --radius: 0.5rem;
+
+    /* Dark section background: #121212 */
+    --dark-bg: 0 0% 7%;
+    --dark-foreground: 0 0% 98%;
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 211 98% 46%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 211 98% 46%;
+  }
+
+  .dark {
+    /* Dark mode - #0A0A0A as base */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 211 98% 46%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 211 98% 46%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 211 98% 46%;
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 211 98% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 211 98% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animations disabled for mobile compatibility */
+
+/* Infinite scroll animations */
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 180s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 180s linear infinite;
+}
+
+/* Underline animation from center */
+.underline-hover {
+  position: relative;
+  display: inline-block;
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.underline-hover::before {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  background: linear-gradient(90deg, transparent 0%, hsl(var(--primary)) 15%, hsl(var(--primary)) 85%, transparent 100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.underline-hover:hover {
+  color: hsl(var(--primary));
+}
+
+.underline-hover:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
