@@ -24,7 +24,7 @@ const TrustedBrands = () => {
             </a>
           </div>
           <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 w-full" style={{animationDelay: '0.3s'}}>
-            <a href="https://www.instagram.com/tradicioncaribe?igsh=dDc3Mm5zZDFmNXI=" target="_blank" rel="noopener noreferrer">
+            <a href="https://tradicioncaribe.co/" target="_blank" rel="noopener noreferrer">
               <img src="/images/3.logo-tradicion.png" alt="Tradición logo" className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto max-h-8 md:max-h-12" />
             </a>
           </div>
@@ -34,7 +34,7 @@ const TrustedBrands = () => {
             </a>
           </div>
           <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 w-full" style={{animationDelay: '0.5s'}}>
-            <a href="https://www.instagram.com/autoexpressctg?igsh=MWlibzIzbThsZjdvbQ==" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/autoexpressctg/" target="_blank" rel="noopener noreferrer">
               <img src="/images/12-autoexpress.png" alt="Autoexpress logo" className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto max-h-16 md:max-h-20" />
             </a>
           </div>
@@ -44,7 +44,7 @@ const TrustedBrands = () => {
             </a>
           </div>
           <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 w-full" style={{animationDelay: '0.7s'}}>
-            <a href="https://www.instagram.com/cartagenacaribefest?igsh=MWphNnd2aXc4cjRxMQ==" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/cartagenacaribefest/" target="_blank" rel="noopener noreferrer">
               <img src="/images/6-logo-en-medidas-especificas.png" alt="En Medidas Específicas logo" className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto max-h-12 md:max-h-16" />
             </a>
           </div>
@@ -54,7 +54,7 @@ const TrustedBrands = () => {
             </a>
           </div>
           <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 w-full" style={{animationDelay: '0.9s'}}>
-            <a href="https://www.instagram.com/bebidasylicores1a?igsh=MTZndHBjc2hxZWcyaw==" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/bebidasylicores1a/" target="_blank" rel="noopener noreferrer">
               <img src="/images/13-logo1A.png" alt="1A logo" className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto max-h-8 md:max-h-12" />
             </a>
           </div>
@@ -69,7 +69,7 @@ const TrustedBrands = () => {
             </a>
           </div>
           <div className="flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 w-full" style={{animationDelay: '1.2s'}}>
-            <a href="https://www.instagram.com/neurocarolinatraslavina?igsh=NjJtamhqbHhma3Ru" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/neurocarolinatraslavina/" target="_blank" rel="noopener noreferrer">
               <img src="/images/7-logo-neuro-carolina.png" alt="Neuro Carolina logo" className="object-contain grayscale hover:grayscale-0 transition-all duration-300 mx-auto max-h-12 md:max-h-16" />
             </a>
           </div>
