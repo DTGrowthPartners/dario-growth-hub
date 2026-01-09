@@ -218,3 +218,20 @@
   color: transparent;
   animation: shimmer 6s linear infinite;
 }
+
+/* Gradient animation for titles */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 4s ease infinite;
+}
