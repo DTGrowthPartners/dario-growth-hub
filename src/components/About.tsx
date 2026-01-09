@@ -42,7 +42,7 @@ const About = () => {
                 backgroundSize: '200% auto',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
-                animation: 'shimmer 12s linear infinite'
+                animation: 'shimmer 6.5s linear infinite'
               }}
             >
               ¿Cómo te puedo ayudar?
@@ -71,7 +71,7 @@ const About = () => {
                 backgroundSize: '200% auto',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
-                animation: 'shimmer 12s linear infinite'
+                animation: 'shimmer 6.5s linear infinite'
               }}
             >
               ¿Cómo te puedo ayudar?
