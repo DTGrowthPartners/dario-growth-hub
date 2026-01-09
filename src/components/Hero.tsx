@@ -17,11 +17,13 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-6 lg:gap-16">
           {/* Content */}
           <div className="text-center">
-            <h1 className="text-[1.25rem] leading-tight sm:text-xl md:text-3xl lg:text-4xl font-bold text-foreground sm:leading-tight mb-8 sm:mb-4 px-6 sm:px-0">
-              Acelero el crecimiento de tu empresa con estrategia, sistemas y ejecución<br className="hidden sm:block" /> orientados a resultados
+            <h1 className="text-[1.1rem] leading-tight sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground sm:leading-tight mb-8 sm:mb-4 px-6 sm:px-0">
+              Acelero el crecimiento de tu empresa<br />
+              con estrategia, sistemas y ejecución<br />
+              orientados a resultados reales
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0">
-              Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="underline-hover">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
+              Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="shimmer-text">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-3 items-center justify-center px-4 sm:px-0">

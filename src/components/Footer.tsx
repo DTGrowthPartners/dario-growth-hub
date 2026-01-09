@@ -5,7 +5,7 @@ import { faLinkedin, faInstagram, faFacebook, faWhatsapp } from '@fortawesome/fr
 
 const navLinks = [
   { href: '#inicio', label: 'Inicio' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
+  { href: '#sobre-mi', label: 'Experiencia' },
   { href: '#como-trabajo', label: 'Cómo trabajo' },
   { href: '#blog', label: 'Blog' },
   { href: '#dt-growth', label: 'DT Growth Partners' },
