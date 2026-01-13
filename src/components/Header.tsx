@@ -8,6 +8,7 @@ import logoImage from '@/assets/logo-dairo-tras.png';
 const navLinks = [
   { href: 'inicio', label: 'Inicio' },
   { href: 'sobre-mi', label: '¿Cómo te puedo ayudar?' },
+  { href: 'casos', label: 'Casos de Éxito' },
   { href: 'blog', label: 'Blog' },
   { href: 'dt-growth', label: 'DT Growth Partners' },
   { href: 'contacto', label: 'Contacto' },

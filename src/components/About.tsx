@@ -25,7 +25,7 @@ const About = () => {
                 transformOrigin: 'center center'
               }}
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(0deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(180deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%)]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_65%,#0A0A0A_85%,#0A0A0A_100%),linear-gradient(0deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(180deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%)]"></div>
           </div>
         </div>
       </div>
@@ -38,13 +38,14 @@ const About = () => {
             </h2>
           </div>
           {/* Image - Mobile */}
-          <div className="order-2 lg:hidden relative">
+          <div className="order-2 lg:hidden relative overflow-hidden">
             <img
               src={darioImg}
               alt="Dario Traslaviña"
               className="w-full h-auto object-cover"
               style={{
-                objectPosition: '35% center'
+                transform: 'scale(1.15) translateX(-10%)',
+                transformOrigin: 'center center'
               }}
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(0deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(180deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%)]"></div>
@@ -56,52 +57,49 @@ const About = () => {
             </h2>
 
             {/* Main intro */}
-            <div className="space-y-4 lg:space-y-4 text-foreground text-base lg:text-lg leading-relaxed -mt-12 lg:mt-0 text-center lg:text-left">
+            <div className="space-y-2 lg:space-y-4 text-foreground text-sm lg:text-lg leading-relaxed -mt-12 lg:mt-0 text-center lg:text-left px-6 lg:px-0">
               <p className="font-medium">
-                Si tu empresa ya vende pero se estancó en un techo de crecimiento,<br />
+                Si tu empresa ya vende pero se estancó en un techo de crecimiento,<br className="hidden lg:inline" />
                 te ayudo a romperlo.
               </p>
               <p>
-                Construyo sistemas de crecimiento basados en datos que convierten<br />
+                Construyo sistemas de crecimiento basados en datos que convierten<br className="hidden lg:inline" />
                 tu inversión en marketing en ventas predecibles.
               </p>
               <p>
-                Combino paid media, activos digitales y automatización para que tu equipo<br />
+                Combino paid media, activos digitales y automatización para que tu equipo<br className="hidden lg:inline" />
                 deje de apagar incendios y pueda enfocarse en escalar.
               </p>
             </div>
 
             {/* How I work */}
-            <div className="mt-10 lg:mt-12">
-              <h3 className="text-xl lg:text-2xl font-semibold text-foreground mb-6 text-center lg:text-left">Cómo trabajo</h3>
-              <div className="space-y-5">
-                <div className="flex gap-3">
+            <div className="mt-6 lg:mt-12 px-4 lg:px-0">
+              <h3 className="text-xl lg:text-2xl font-semibold text-foreground mb-4 lg:mb-6 text-center lg:text-left">Cómo trabajo</h3>
+              <div className="space-y-3 lg:space-y-5">
+                <div className="flex gap-2 lg:gap-3">
                   <span className="text-primary font-bold text-xl flex-shrink-0">1.</span>
                   <div>
-                    <p className="text-foreground font-semibold mb-1">Diagnóstico con datos reales</p>
+                    <p className="text-foreground font-semibold mb-0.5 lg:mb-1">Diagnóstico con datos reales</p>
                     <p className="text-muted-foreground text-sm lg:text-base">
-                      Analizamos tus funnels, métricas y rentabilidad antes de invertir<br />
-                      un peso más.
+                      Analizamos tus funnels, métricas y rentabilidad antes de invertir<br className="hidden lg:inline" /> un peso más.
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-2 lg:gap-3">
                   <span className="text-primary font-bold text-xl flex-shrink-0">2.</span>
                   <div>
-                    <p className="text-foreground font-semibold mb-1">Sistema de crecimiento integrado</p>
+                    <p className="text-foreground font-semibold mb-0.5 lg:mb-1">Sistema de crecimiento integrado</p>
                     <p className="text-muted-foreground text-sm lg:text-base">
-                      No "hacks" sueltos: conecto campañas, CRM y automatizaciones<br />
-                      en un sistema que genera ventas todos los días.
+                      No "hacks" sueltos: conecto campañas, CRM y automatizaciones<br className="hidden lg:inline" /> en un sistema que genera ventas todos los días.
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-2 lg:gap-3">
                   <span className="text-primary font-bold text-xl flex-shrink-0">3.</span>
                   <div>
-                    <p className="text-foreground font-semibold mb-1">Optimización continua</p>
+                    <p className="text-foreground font-semibold mb-0.5 lg:mb-1">Optimización continua</p>
                     <p className="text-muted-foreground text-sm lg:text-base">
-                      Te acompaño semana a semana, midiendo lo que importa:<br />
-                      CAC, ROAS y revenue. No clics.
+                      Te acompaño semana a semana, midiendo lo que importa:<br className="hidden lg:inline" /> CAC, ROAS y revenue. No clics.
                     </p>
                   </div>
                 </div>
