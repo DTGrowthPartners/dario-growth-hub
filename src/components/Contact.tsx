@@ -60,8 +60,8 @@ ${formData.message}`;
   };
 
   return (
-    <BackgroundLines className="min-h-screen flex items-center bg-[#0A0A0A]" svgOptions={{ duration: 12 }}>
-      <section id="contacto" className="w-full py-16 md:py-20 lg:py-24 relative z-10">
+    <BackgroundLines className="md:min-h-screen flex items-center bg-[#0A0A0A]" svgOptions={{ duration: 12 }}>
+      <section id="contacto" className="w-full py-8 md:py-20 lg:py-24 relative z-10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-2xl mx-auto">
             {/* Header */}

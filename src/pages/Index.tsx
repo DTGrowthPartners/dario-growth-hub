@@ -4,8 +4,6 @@ import Hero from '@/components/Hero';
 import TrustedBrands from '@/components/TrustedBrands';
 import About from '@/components/About';
 import CasosExito from '@/components/CasosExito';
-import Blog from '@/components/Blog';
-import DTGrowthPartners from '@/components/DTGrowthPartners';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -31,8 +29,6 @@ const Index = () => {
         <TrustedBrands />
         <About />
         <CasosExito />
-        <Blog />
-        <DTGrowthPartners />
         <Contact />
       </main>
       <Footer />

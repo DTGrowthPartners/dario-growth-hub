@@ -9,19 +9,19 @@ const Hero = () => {
   };
 
   return (
-    <section id="inicio" className="relative h-[80vh] bg-background overflow-hidden">
+    <section id="inicio" className="relative h-[70vh] md:h-[80vh] bg-background overflow-hidden">
       <BackgroundBeams className="absolute inset-0 z-0" />
 
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-6 lg:gap-16">
           {/* Content */}
           <div className="text-center">
-            <h1 className="text-[1.1rem] leading-tight sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground sm:leading-tight mb-8 sm:mb-4 px-6 sm:px-0">
-              Acelero el crecimiento de tu empresa<br />
-              con estrategia, sistemas y ejecución<br />
-              orientados a resultados reales
+            <h1 className="text-[1.75rem] leading-snug sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground md:leading-tight mb-6 sm:mb-4 px-4 sm:px-0 max-w-[360px] sm:max-w-none mx-auto">
+              Acelero el crecimiento de tu empresa<br className="hidden md:inline" />
+              {' '}con estrategia, sistemas y ejecución<br className="hidden md:inline" />
+              {' '}orientados a resultados reales
             </h1>
-            <p className="text-[0.95rem] sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-10 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
               Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="shimmer-text">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
             </p>
 
