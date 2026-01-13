@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logoImage from '@/assets/logo-dairo-tras.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faInstagram, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#sobre-mi', label: '¿Cómo te puedo ayudar?' },
-  { href: '#casos', label: 'Casos de Éxito' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: 'inicio', label: 'Inicio' },
+  { href: 'sobre-mi', label: '¿Cómo te puedo ayudar?' },
+  { href: 'servicios', label: 'Servicios' },
+  { href: 'casos', label: 'Casos de Éxito' },
+  { href: 'contacto', label: 'Contacto' },
 ];
 
 const socialLinks = [
@@ -18,8 +19,18 @@ const socialLinks = [
 ];
 
 const Footer = () => {
-  const handleNavClick = () => {
-    // Navigation handled by React Router
+  const location = useLocation();
+
+  // Check if we're on the home page
+  const isHomePage = location.pathname === '/';
+
+  // Get the correct href based on current location
+  const getHref = (sectionId: string) => {
+    if (isHomePage) {
+      return `#${sectionId}`;
+    }
+    // For any other page, redirect to home with anchor
+    return `/#${sectionId}`;
   };
 
   return (
@@ -28,11 +39,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-10 lg:gap-16 mb-10">
           {/* Logo & Description */}
           <div>
-            <Link to="/" onClick={handleNavClick}>
+            <Link to="/">
               <img src={logoImage} alt="Dario Traslaviña" className="h-8 mb-4 brightness-0 invert hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-white text-sm leading-relaxed">
-              Founder & Growth Partner. Ayudando a empresas ambiciosas a escalar 
+              Founder & Growth Partner. Ayudando a empresas ambiciosas a escalar
               con estrategia, paid media y sistemas de crecimiento.
             </p>
           </div>
@@ -44,7 +55,7 @@ const Footer = () => {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={getHref(link.href)}
                   className="text-sm text-white hover:text-primary transition-colors"
                 >
                   {link.label}

@@ -8,6 +8,7 @@ import logoImage from '@/assets/logo-dairo-tras.png';
 const navLinks = [
   { href: 'inicio', label: 'Inicio' },
   { href: 'sobre-mi', label: '¿Cómo te puedo ayudar?' },
+  { href: 'servicios', label: 'Servicios' },
   { href: 'casos', label: 'Casos de Éxito' },
   { href: 'contacto', label: 'Contacto' },
 ];
@@ -29,15 +30,16 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Check if we're on a blog post page
-  const isBlogPost = location.pathname.startsWith('/blog/') && location.pathname !== '/blog';
+  // Check if we're on the home page
+  const isHomePage = location.pathname === '/';
 
   // Get the correct href based on current location
   const getHref = (sectionId: string) => {
-    if (isBlogPost) {
-      return `/#${sectionId}`;
+    if (isHomePage) {
+      return `#${sectionId}`;
     }
-    return `#${sectionId}`;
+    // For any other page, redirect to home with anchor
+    return `/#${sectionId}`;
   };
 
   return (

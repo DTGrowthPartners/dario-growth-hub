@@ -11,9 +11,9 @@
 
 @layer base {
   :root {
-    /* Primary brand blue: #0273E8 */
-    --primary: 211 98% 46%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary brand blue */
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 4%;
 
     /* Background black: #0A0A0A */
     --background: 0 0% 4%;
@@ -32,20 +32,33 @@
 
     /* Muted */
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Accent - same as primary for CTAs */
-    --accent: 211 98% 46%;
-    --accent-foreground: 0 0% 98%;
+    /* Accent */
+    --accent: 210 85% 45%;
+    --accent-foreground: 0 0% 4%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 211 98% 46%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 210 85% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-hero: linear-gradient(90deg, hsl(210 100% 15% / 0.1), hsl(210 85% 45% / 0.05));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 7%), hsl(0 0% 5%));
+    --shadow-glow: 0 0 40px hsl(210 85% 45% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Blue electric tones for background boxes */
+    --blue-300: 200 100% 70%;
+    --blue-400: 210 100% 60%;
+    --blue-500: 210 100% 50%;
+    --blue-600: 220 100% 45%;
 
     /* Dark section background: #121212 */
     --dark-bg: 0 0% 7%;
@@ -53,12 +66,17 @@
 
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 211 98% 46%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 4%;
     --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 211 98% 46%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 210 85% 45%;
+  }
+
+  .theme {
+    --animate-grid: grid 15s linear infinite;
+    --animate-spin: spin 2s linear infinite;
   }
 
   .dark {
@@ -72,33 +90,33 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 211 98% 46%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 0 0% 15%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 211 98% 46%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 210 85% 45%;
+    --accent-foreground: 0 0% 4%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 211 98% 46%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 210 85% 45%;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 211 98% 46%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 16%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 211 98% 46%;
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 210 85% 45%;
   }
 }
 
@@ -234,4 +252,103 @@
 
 .animate-gradient {
   animation: gradient 4s ease infinite;
+}
+
+/* Grid animation for RetroGrid */
+@keyframes grid {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Glow Button Animation */
+.scroll-glow-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-glow-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(2, 127, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.scroll-glow-button.scroll-active::before {
+  animation: scrollGlow 2s ease-in-out;
+}
+
+@keyframes scrollGlow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Gradient text */
+.gradient-text {
+  background: #0f76d6;
+  background: linear-gradient(90deg, rgba(15, 118, 214, 1) 0%, rgba(38, 189, 240, 1) 65%, rgba(194, 251, 255, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient card background */
+.bg-gradient-card {
+  background: linear-gradient(180deg, rgba(2, 115, 232, 0.05) 0%, transparent 50%);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_hsl(210_100%_50%/0.2)] hover:shadow-[0_0_30px_hsl(210_100%_50%/0.4)] transition-all duration-300;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary/80 text-foreground font-medium transition-all duration-300;
+}
+
+/* Card hover effect */
+.card-hover {
+  @apply transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_20px_hsl(210_100%_50%/0.1)];
+}
+
+/* Section container */
+.section-container {
+  @apply max-w-7xl mx-auto px-6 lg:px-8;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Float animation */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
