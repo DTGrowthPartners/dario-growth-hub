@@ -57,7 +57,7 @@ const About = () => {
             </h2>
 
             {/* Main intro */}
-            <div className="space-y-4 text-muted-foreground text-sm lg:text-base leading-relaxed text-center lg:text-left px-4 lg:px-0">
+            <div className="-mt-20 lg:mt-0 z-20 relative space-y-4 text-muted-foreground text-base lg:text-lg leading-relaxed text-center lg:text-left px-4 lg:px-0">
               <p>
                 Si tu empresa ya vende pero se estancó en un techo de crecimiento,<br className="hidden lg:inline" />
                 te ayudo a romperlo.
