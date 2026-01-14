@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-6 lg:gap-16">
           {/* Content */}
           <div className="text-center">
-            <h1 className="text-lg leading-none sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground md:leading-tight mb-6 sm:mb-4 px-4 sm:px-0 max-w-[340px] sm:max-w-none mx-auto">
+            <h1 className="mt-8 text-xl leading-none sm:text-3xl md:text-5xl lg:text-6xl font-bold text-foreground md:leading-tight mb-6 sm:mb-4 px-4 sm:px-0 max-w-[340px] sm:max-w-none mx-auto">
               {/* Mobile title */}
               <span className="md:hidden">
                 Acelero el crecimiento de tu empresa con estrategia, sistemas y ejecución orientados a resultados reales
@@ -28,7 +28,7 @@ const Hero = () => {
                 {' '}orientados a resultados reales
               </span>
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
+            <p className="mt-8 sm:mt-0 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-8 text-center px-4 sm:px-0 max-w-2xl mx-auto">
               Fundador de <a href="https://dtgrowthpartners.com" target="_blank" rel="noopener noreferrer" className="shimmer-text">DT Growth Partners</a>.<br />Ayudamos a empresas que ya venden a multiplicar resultados con pauta digital, desarrollo, automatización e IA.
             </p>
 

@@ -47,7 +47,7 @@ const Footer = () => {
               <img src={logoImage} alt="Dario Traslaviña" className="h-8 mb-4 brightness-0 invert hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-white text-sm leading-relaxed">
-              Founder & Growth Partner. Ayudando a empresas ambiciosas a escalar
+              Ayudando a empresas ambiciosas a escalar
               con estrategia, paid media y sistemas de crecimiento.
             </p>
           </div>
@@ -92,9 +92,6 @@ const Footer = () => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs sm:text-sm text-white text-center md:text-left">
             © {new Date().getFullYear()} DT Growth Partners. 🚀 Latin roots, global reach.
-          </p>
-          <p className="text-xs sm:text-sm text-white">
-            Founder & Growth Partner
           </p>
         </div>
       </div>
