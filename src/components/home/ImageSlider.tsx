@@ -1,312 +1,211 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-
-// Import vanilla-tilt
-import VanillaTilt from "vanilla-tilt";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
 const ImageSlider = () => {
-  const [activeProject, setActiveProject] = useState(0);
-  const tiltRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const isAnimatingRef = useRef(false);
+  const isDraggingRef = useRef(false);
+  const touchStartYRef = useRef(0);
+  const [activeIndex, setActiveIndex] = useState(5); // Start with the last card (visible at front)
 
-  const projects = [
-    {
-      id: 0,
-      title: "Equilibrio Clinic",
-      category: "Clínica Estética",
-      description: "Proyecto de estrategia digital y rediseño web para Equilibrio Clinic, clínica líder en estética y dermatología en Cartagena. El objetivo fue comunicar su experiencia y tecnología avanzada, creando una plataforma que proyecta confianza y optimiza la agenda de valoraciones.",
-      logo: "/images/2.logo-equilibrio-clinic.png",
-      previewImage: "/images/desarrolloweb/web3.png",
-      fallbackImage: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23f3f4f6'/%3E%3Ctext x='200' y='125' font-family='Arial, sans-serif' font-size='16' fill='%236b7280' text-anchor='middle' dominant-baseline='middle'%3EEquilibrio Clinic%3C/text%3E%3C/svg%3E",
-      url: "https://equilibrioclinic.com.co",
-      technologies: ["WordPress", "Elementor", "Integración software Agenda"],
-      stats: {
-        responsive: "100%",
-        performance: "A+",
-        seo: "SEO",
-        year: "2025"
-      }
-    },
-    {
-      id: 1,
-      title: "Arismendy Andrade",
-      category: "Constructora",
-      description: "Sitio web corporativo para un proveedor de soluciones industriales. Diseño intuitivo con una presentación clara de su portafolio de equipos y servicios, y una estructura optimizada para facilitar la generación de cotizaciones y el contacto comercial.",
-      logo: "https://dairotraslavina.com/wp-content/uploads/2025/06/LOGO_LOGO-7aa39e.svg",
-      previewImage: "/images/desarrolloweb/web2.png",
-      fallbackImage: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23f3f4f6'/%3E%3Ctext x='200' y='125' font-family='Arial, sans-serif' font-size='16' fill='%236b7280' text-anchor='middle' dominant-baseline='middle'%3EArismendy Andrade%3C/text%3E%3C/svg%3E",
-      url: "https://arismendyandrade.com",
-      technologies: ["WordPress", "GSAP", "Tailwind CSS", "SEO"],
-      stats: {
-        responsive: "100%",
-        performance: "A+",
-        seo: "SEO",
-        year: "2024"
-      }
-    },
-    {
-      id: 2,
-      title: "ACBFIT",
-      category: "Gimnasio/Fitness",
-      description: "Sitio web corporativo para gimnasio y centro de fitness. Diseño moderno con presentación clara de servicios, horarios, planes de membresía y sistema de reservas online para clases y entrenamientos personalizados.",
-      logo: "/images/5.logo-acbfit-4.png",
-      previewImage: "/images/desarrolloweb/web1.png",
-      fallbackImage: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23f3f4f6'/%3E%3Ctext x='200' y='125' font-family='Arial, sans-serif' font-size='16' fill='%236b7280' text-anchor='middle' dominant-baseline='middle'%3EACBFIT%3C/text%3E%3C/svg%3E",
-      url: "https://acbfit.com",
-      technologies: ["WordPress", "Elementor", "Integración software Evo"],
-      stats: {
-        responsive: "100%",
-        performance: "A+",
-        seo: "SEO",
-        year: "2024"
-      }
-    }
+  const images = [
+    { src: "/images/desarrolloweb/web3.png", title: "EQUILIBRIO CLINIC", url: "https://equilibrioclinic.com.co" },
+    { src: "/images/desarrolloweb/web1.png", title: "ACB FIT", url: "https://acbfit.com" },
+    { src: "/images/desarrolloweb/web2.png", title: "ARISMENDY ANDRADE", url: "https://arismendyandrade.com" },
+    { src: "/images/desarrolloweb/04.jpg", title: "TRADICION CARIBE", url: "https://tradicioncaribe.com" },
+    { src: "/images/desarrolloweb/05.jpg", title: "ROBERTO CASANOVA", url: "https://robertcasanova.com" },
+    { src: "/images/desarrolloweb/CF.png", title: "COBRAFLOW", url: "https://www.cobraflow.co" },
   ];
 
-  // Initialize Vanilla Tilt
-  useEffect(() => {
-    if (tiltRef.current) {
-      VanillaTilt.init(tiltRef.current, {
-        max: 12,
-        speed: 300,
-        glare: false,
-        scale: 1.0,
-        gyroscopeMinAngleX: 1,
+  const splitTextIntoSpans = (text: string) => {
+    return text.split("").map((char, index) => (
+      <span key={index} className="inline-block">
+        {char === " " ? "\u00A0\u00A0" : char}
+      </span>
+    ));
+  };
+
+  const initializeCards = () => {
+    if (!sliderRef.current) return;
+    const cards = Array.from(sliderRef.current.querySelectorAll(".slider-card"));
+
+    gsap.to(cards, {
+      y: (i) => -15 + 15 * i + "%",
+      z: (i) => 15 * i,
+      opacity: 1,
+      duration: 1,
+      ease: "cubic-bezier(0.83, 0, 0.17, 1)",
+      stagger: -0.1,
+    });
+
+    // Show button only on last card
+    gsap.set(".slider-button", { opacity: 0 });
+    gsap.set(".slider-card:last-child .slider-button", { opacity: 1 });
+  };
+
+  const handleScroll = () => {
+    if (isAnimatingRef.current || !sliderRef.current) return;
+    isAnimatingRef.current = true;
+
+    const slider = sliderRef.current;
+    const cards = Array.from(slider.querySelectorAll(".slider-card"));
+    const lastCard = cards[cards.length - 1] as HTMLElement;
+    const nextCard = cards[cards.length - 2] as HTMLElement;
+
+    gsap.to(lastCard.querySelectorAll("h2 span"), {
+      y: 200,
+      duration: 0.75,
+      ease: "cubic-bezier(0.83, 0, 0.17, 1)",
+    });
+
+    gsap.to(lastCard, {
+      y: "+=150%",
+      duration: 0.75,
+      ease: "cubic-bezier(0.83, 0, 0.17, 1)",
+      onComplete: () => {
+        slider.prepend(lastCard);
+        initializeCards();
+        gsap.set(lastCard.querySelectorAll("h2 span"), { y: -200 });
+
+        // Update active index - move to previous image
+        setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+
+        setTimeout(() => {
+          isAnimatingRef.current = false;
+        }, 1000);
+      },
+    });
+
+    if (nextCard) {
+      gsap.to(nextCard.querySelectorAll("h2 span"), {
+        y: 0,
+        duration: 1,
+        ease: "cubic-bezier(0.83, 0, 0.17, 1)",
+        stagger: 0.05,
       });
     }
+  };
 
-    // Cleanup function
+  useEffect(() => {
+    initializeCards();
+
+    if (sliderRef.current) {
+      gsap.set(".slider-card h2 span", { y: -200 });
+      gsap.set(".slider-card:last-child h2 span", { y: 0 });
+      gsap.set(".slider-button", { opacity: 0 });
+      gsap.set(".slider-card:last-child .slider-button", { opacity: 1 });
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" && !isAnimatingRef.current) {
+        e.preventDefault();
+        handleScroll();
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (isAnimatingRef.current) return;
+      isDraggingRef.current = true;
+      touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        handleScroll();
+      }
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      if (isAnimatingRef.current) return;
+      isDraggingRef.current = true;
+      e.preventDefault();
+    };
+
+    const handleMouseUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        handleScroll();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    const slider = sliderRef.current;
+    if (slider) {
+      slider.addEventListener("touchstart", handleTouchStart as any);
+      slider.addEventListener("touchend", handleTouchEnd);
+      slider.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mouseup", handleMouseUp);
+    }
+
     return () => {
-      if (tiltRef.current && (tiltRef.current as any).vanillaTilt) {
-        (tiltRef.current as any).vanillaTilt.destroy();
+      document.removeEventListener("keydown", handleKeyDown);
+      if (slider) {
+        slider.removeEventListener("touchstart", handleTouchStart as any);
+        slider.removeEventListener("touchend", handleTouchEnd);
+        slider.removeEventListener("mousedown", handleMouseDown);
+        document.removeEventListener("mouseup", handleMouseUp);
       }
     };
   }, []);
 
-  const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
   return (
-    <section id="webs-portafolio" className="py-20 bg-black">
-      <div className="section-container">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-bold">
-            Webs que <span className="gradient-text">convierten</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Proyectos que generan resultados medibles para nuestros clientes
-          </p>
-        </div>
+    <section id="webs-portafolio" className="relative w-full h-[60vh] md:h-screen overflow-hidden bg-black flex flex-col">
+      {/* Title */}
+      <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-10 space-y-1 md:space-y-2 w-full px-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight">
+          Webs que <span className="gradient-text">convierten</span>
+        </h2>
+        <p className="text-sm md:text-lg lg:text-xl text-neutral-400 text-center max-w-2xl mx-auto px-2 md:px-4">
+          Proyectos que generan resultados medibles para nuestros clientes
+        </p>
+      </div>
 
-        {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-stretch">
-          {/* Left: Project Preview - Same height as cards container */}
-          <div className="flex items-stretch" ref={tiltRef}>
-            <Card className="bg-card border-border/50 overflow-hidden group flex flex-col w-full">
-              <CardContent className="p-0 flex-1 flex flex-col">
-                <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 flex-1">
-                  <img
-                    src={projects[activeProject].previewImage}
-                    alt={`${projects[activeProject].title} preview`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      e.currentTarget.src = projects[activeProject].fallbackImage;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Visit Site Button */}
-                  <a
-                    href={projects[activeProject].url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute bottom-6 right-6 bg-primary/90 hover:bg-primary text-primary-foreground px-4 py-2 rounded-lg flex items-center gap-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
-                  >
-                    Visitar sitio
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-
-                <div className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={projects[activeProject].logo}
-                      alt={`${projects[activeProject].title} logo`}
-                      className="h-10 w-auto object-contain"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                    <div>
-                      <h3 className="text-xl font-semibold">{projects[activeProject].title}</h3>
-                      <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                        {projects[activeProject].category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {projects[activeProject].description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {projects[activeProject].technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-4 gap-2 pt-4 border-t border-border/50">
-                    {Object.entries(projects[activeProject].stats).map(([key, value]) => (
-                      <div key={key} className="text-center">
-                        <div className="text-sm font-semibold text-primary">{value}</div>
-                        <div className="text-xs text-muted-foreground capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Right: Project Thumbnails */}
-          <div className="flex flex-col justify-between gap-4 h-full">
-            {projects.map((project, index) => (
-              <Card
-                key={project.id}
-                className={`cursor-pointer transition-all duration-300 flex-1 ${
-                  activeProject === index
-                    ? 'ring-2 ring-primary bg-primary/5'
-                    : 'hover:bg-card/80'
-                }`}
-                onClick={() => setActiveProject(index)}
-              >
-                <CardContent className="p-4 flex items-center gap-4 h-full">
-                  <div className="relative w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-primary/5 to-primary/10">
-                    <img
-                      src={project.previewImage}
-                      alt={`${project.title} thumbnail`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = project.fallbackImage;
-                      }}
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold truncate">{project.title}</h4>
-                    <span className="text-xs text-muted-foreground">{project.category}</span>
-                  </div>
-                  {activeProject === index && (
-                    <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Layout - Carousel */}
-        <div className="lg:hidden relative">
-          <Card className="bg-card border-border/50 overflow-hidden">
-            <CardContent className="p-0">
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10">
-                <img
-                  src={projects[activeProject].previewImage}
-                  alt={`${projects[activeProject].title} preview`}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = projects[activeProject].fallbackImage;
-                  }}
-                />
-              </div>
-
-              <div className="p-6 space-y-4">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={projects[activeProject].logo}
-                    alt={`${projects[activeProject].title} logo`}
-                    className="h-8 w-auto object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold">{projects[activeProject].title}</h3>
-                    <span className="text-xs text-primary font-medium uppercase tracking-wider">
-                      {projects[activeProject].category}
-                    </span>
-                  </div>
-                </div>
-
-                <p className="text-sm text-muted-foreground">
-                  {projects[activeProject].description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {projects[activeProject].technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
+      <div
+        ref={sliderRef}
+        className="absolute top-[13vh] md:top-[15vh] w-full h-[calc(100%-160px)] md:h-[calc(100%-200px)] overflow-hidden"
+        style={{
+          perspective: "200px",
+          perspectiveOrigin: "50% 100%",
+        }}
+      >
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="slider-card absolute top-1/2 left-1/2 w-[85%] sm:w-[70%] md:w-1/2 aspect-video md:aspect-auto md:h-[500px] rounded-lg overflow-hidden bg-black cursor-grab active:cursor-grabbing select-none"
+            style={{
+              transform: "translate3d(-50%, -50%, 0px)",
+              opacity: 0,
+            }}
+            data-index={index}
+          >
+            <img
+              src={image.src}
+              alt={image.title}
+              className="absolute w-full h-full object-cover object-top opacity-75"
+              draggable={false}
+            />
+            <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full overflow-hidden flex flex-col items-center gap-1.5 md:gap-6">
+              <h2 className="text-center text-[4.5vw] sm:text-[3.5vw] md:text-[4vw] font-sans font-bold tracking-tight uppercase text-white px-2">
+                {splitTextIntoSpans(image.title)}
+              </h2>
+              <Button className="bg-white text-black hover:bg-white/90 group slider-button opacity-0 text-[10px] md:text-base px-2.5 py-1 md:px-6 md:py-2 h-auto" asChild>
                 <a
-                  href={projects[activeProject].url}
+                  href={image.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:underline"
+                  className="flex items-center gap-2"
                 >
-                  Visitar sitio
-                  <ExternalLink className="w-4 h-4" />
+                  Ver Proyecto
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevProject}
-            className="absolute left-2 top-1/3 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border rounded-full p-2 hover:bg-primary/10 transition-colors"
-            aria-label="Previous project"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={nextProject}
-            className="absolute right-2 top-1/3 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border rounded-full p-2 hover:bg-primary/10 transition-colors"
-            aria-label="Next project"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveProject(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeProject === index
-                    ? 'w-6 bg-primary'
-                    : 'w-2 bg-primary/30 hover:bg-primary/50'
-                }`}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
+              </Button>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );

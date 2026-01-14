@@ -291,7 +291,7 @@ const SistemasAutomatizaciones = () => {
         </section>
 
         {/* Systems */}
-        <section className="py-20 bg-gradient-card">
+        <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
             <div className="text-center mb-16 space-y-4">
               <h2 className="text-3xl lg:text-4xl font-bold">
@@ -449,7 +449,7 @@ const SistemasAutomatizaciones = () => {
         </section>
 
         {/* FAQs */}
-        <section className="py-20 bg-gradient-card">
+        <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container max-w-3xl">
             <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16">
               Preguntas <span className="gradient-text">frecuentes</span>
@@ -488,7 +488,7 @@ const SistemasAutomatizaciones = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-black">
+        <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
             <div className="relative overflow-hidden rounded-3xl bg-black border border-border/50 p-12 lg:p-16">
               <video

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+  <!-- Google My Business / Google Business Profile Logo -->
+  <path fill="#4285F4" d="M22 8.5c0-.28-.22-.5-.5-.5h-19c-.28 0-.5.22-.5.5v2c0 .28.22.5.5.5h19c.28 0 .5-.22.5-.5v-2z"/>
+  <path fill="#34A853" d="M3.5 11h4v9.5c0 .28-.22.5-.5.5H4c-.28 0-.5-.22-.5-.5V11z"/>
+  <path fill="#FBBC05" d="M9.5 11h5v9.5c0 .28-.22.5-.5.5h-4c-.28 0-.5-.22-.5-.5V11z"/>
+  <path fill="#EA4335" d="M16.5 11h4v9.5c0 .28-.22.5-.5.5h-3c-.28 0-.5-.22-.5-.5V11z"/>
+  <path fill="#4285F4" d="M2 8l3-5h14l3 5H2z"/>
+  <circle fill="#fff" cx="5.5" cy="8" r="1.5"/>
+  <circle fill="#fff" cx="12" cy="8" r="1.5"/>
+  <circle fill="#fff" cx="18.5" cy="8" r="1.5"/>
+</svg>

@@ -24,6 +24,9 @@ const Footer = () => {
   // Check if we're on the home page
   const isHomePage = location.pathname === '/';
 
+  // Check if we're on the Desarrollo Web page
+  const isDesarrolloWebPage = location.pathname === '/servicios/desarrollo-web';
+
   // Get the correct href based on current location
   const getHref = (sectionId: string) => {
     if (isHomePage) {
@@ -34,7 +37,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0A0A0A] text-white py-12 lg:py-16">
+    <footer className={`${isDesarrolloWebPage ? 'bg-black' : 'bg-[#0A0A0A]'} text-white py-12 lg:py-16`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid md:grid-cols-3 gap-10 lg:gap-16 mb-10">
           {/* Logo & Description */}

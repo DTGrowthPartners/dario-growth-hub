@@ -89,14 +89,14 @@ const Servicios = () => {
                       rel="noopener noreferrer"
                       className="mt-auto"
                     >
-                      <Button variant="ghost" className="group w-full justify-between mt-3 p-2 text-xs scroll-glow-button">
+                      <Button variant="outline" className="group w-full justify-between mt-3 p-2 text-xs border-primary/50 bg-primary/10 hover:bg-primary hover:border-primary text-primary hover:text-white">
                         Ver más
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </a>
                   ) : (
                     <Link to={service.path} className="mt-auto">
-                      <Button variant="ghost" className="group w-full justify-between mt-3 p-2 text-xs scroll-glow-button">
+                      <Button variant="outline" className="group w-full justify-between mt-3 p-2 text-xs border-primary/50 bg-primary/10 hover:bg-primary hover:border-primary text-primary hover:text-white">
                         Ver más
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                       </Button>
