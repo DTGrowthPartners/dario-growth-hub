@@ -16,14 +16,10 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-6 lg:gap-16">
           {/* Content */}
           <div className="text-center">
-            <h1 className="text-[1.5rem] leading-tight sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground md:leading-tight mb-6 sm:mb-4 px-4 sm:px-0 max-w-[340px] sm:max-w-none mx-auto">
+            <h1 className="text-lg leading-none sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground md:leading-tight mb-6 sm:mb-4 px-4 sm:px-0 max-w-[340px] sm:max-w-none mx-auto">
               {/* Mobile title */}
               <span className="md:hidden">
-                Acelero el crecimiento<br />
-                de tu empresa con<br />
-                estrategia, sistemas<br />
-                y ejecución orientados<br />
-                a resultados reales
+                Acelero el crecimiento de tu empresa con estrategia, sistemas y ejecución orientados a resultados reales
               </span>
               {/* Desktop title */}
               <span className="hidden md:inline">
