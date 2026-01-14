@@ -28,7 +28,7 @@ const SistemasAutomatizaciones = () => {
     },
     {
       title: "DTOS",
-      image: "/images/n8n-color.png",
+      image: "/images/desarrolloweb/cohete.png",
       description: "Sistema operativo empresarial diseñado para potenciar tu negocio. Integra automatizaciones avanzadas, gestión de datos en tiempo real, dashboards personalizados y control total de tus operaciones desde una plataforma unificada. Escala tu operación con infraestructura robusta y métricas que importan."
     }
   ];

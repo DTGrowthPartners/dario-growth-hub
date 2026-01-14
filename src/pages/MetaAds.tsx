@@ -106,12 +106,12 @@ const MetaAds = () => {
             }}
           />
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0A0A0A]" />
           {/* Bottom Gradient */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-40 sm:h-32"
+            className="absolute bottom-0 left-0 right-0 h-48 sm:h-40"
             style={{
-              background: 'linear-gradient(to bottom, transparent, hsl(0 0% 7%))'
+              background: 'linear-gradient(to bottom, transparent, #0A0A0A)'
             }}
           />
 

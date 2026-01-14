@@ -56,8 +56,8 @@ const About = () => {
               ¿Cómo te puedo ayudar?
             </h2>
 
-            {/* Main intro - Desktop only */}
-            <div className="hidden lg:block space-y-4 text-muted-foreground text-base leading-relaxed text-left">
+            {/* Main intro */}
+            <div className="space-y-4 text-muted-foreground text-sm lg:text-base leading-relaxed text-center lg:text-left px-4 lg:px-0">
               <p>
                 Si tu empresa ya vende pero se estancó en un techo de crecimiento,<br className="hidden lg:inline" />
                 te ayudo a romperlo.
