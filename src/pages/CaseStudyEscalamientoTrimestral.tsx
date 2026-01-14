@@ -91,10 +91,10 @@ const CaseStudyEscalamientoTrimestral = () => {
             <Button
               variant="ghost"
               className="mb-8 group"
-              onClick={() => navigate('/servicios/meta-ads')}
+              onClick={() => navigate('/ads')}
             >
               <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              Volver a Meta Ads
+              Volver a Ads
             </Button>
 
             <div className="max-w-4xl space-y-6">
@@ -395,7 +395,7 @@ const CaseStudyEscalamientoTrimestral = () => {
                   size="lg"
                   variant="outline"
                   className="text-lg px-8"
-                  onClick={() => navigate('/servicios/meta-ads')}
+                  onClick={() => navigate('/ads')}
                 >
                   Ver planes disponibles
                 </Button>

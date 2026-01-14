@@ -134,6 +134,43 @@
     font-family: 'Inter', sans-serif;
   }
 
+  /* Mobile viewport height fix for Safari/Chrome consistency */
+  /* Using dvh (dynamic viewport height) with vh fallback */
+  :root {
+    --vh: 1vh;
+    --mobile-section-height: 70vh;
+    --mobile-section-height-tall: 80vh;
+    --mobile-section-height-full: 100vh;
+  }
+
+  @supports (height: 1dvh) {
+    :root {
+      --vh: 1dvh;
+      --mobile-section-height: 70dvh;
+      --mobile-section-height-tall: 80dvh;
+      --mobile-section-height-full: 100dvh;
+    }
+  }
+
+  /* Mobile-specific viewport height classes */
+  @media (max-width: 767px) {
+    .h-mobile-section {
+      height: var(--mobile-section-height);
+    }
+    .h-mobile-section-tall {
+      height: var(--mobile-section-height-tall);
+    }
+    .h-mobile-full {
+      height: var(--mobile-section-height-full);
+    }
+    .min-h-mobile-section {
+      min-height: var(--mobile-section-height);
+    }
+    .min-h-mobile-full {
+      min-height: var(--mobile-section-height-full);
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
   }

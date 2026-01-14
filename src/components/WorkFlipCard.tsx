@@ -45,7 +45,7 @@ export function WorkFlipCard({ data }: WorkFlipCardProps) {
 
   return (
     <div
-      className="relative w-full h-64 cursor-pointer"
+      className="relative w-full h-[28vh] md:h-64 cursor-pointer"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

@@ -81,7 +81,7 @@ const CasosExito = () => {
   };
 
   return (
-    <section id="casos" className="relative overflow-hidden bg-[#0A0A0A] py-8 md:py-24">
+    <section id="casos" className="relative overflow-hidden bg-[#0A0A0A] py-[5vh] md:py-24">
       {/* Stars Background */}
       <StarsBackground className="z-0" />
       <ShootingStars

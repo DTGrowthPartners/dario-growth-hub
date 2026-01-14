@@ -10,7 +10,7 @@ const stats = [
 const About = () => {
 
   return (
-    <section id="sobre-mi" className="lg:min-h-screen flex items-center bg-[#0A0A0A] relative py-8 lg:py-0">
+    <section id="sobre-mi" className="lg:min-h-screen flex items-center bg-[#0A0A0A] relative py-[4vh] lg:py-0">
       {/* Image */}
       <div className="absolute top-0 right-0 bottom-0 w-[45%] hidden lg:block">
         <div className="relative h-full w-full">
@@ -50,18 +50,7 @@ const About = () => {
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(0deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%),linear-gradient(180deg,#0A0A0A_0%,#0A0A0A_5%,transparent_25%,transparent_75%,#0A0A0A_95%,#0A0A0A_100%)]"></div>
           </div>
-          {/* Mobile intro text - overlaps image slightly */}
-          <div className="order-2 lg:hidden -mt-16 relative z-20 px-6 text-center">
-            <div className="space-y-1 text-muted-foreground text-xs leading-relaxed">
-              <p>
-                Si tu empresa ya vende pero se estancó en un techo de crecimiento, te ayudo a romperlo.
-              </p>
-              <p>
-                Construyo sistemas de crecimiento basados en datos que convierten tu inversión en marketing en ventas predecibles.
-              </p>
-            </div>
-          </div>
-          {/* Content - Mobile first */}
+                    {/* Content - Mobile first */}
           <div className="order-3 lg:order-1 lg:flex-1">
             <h2 className="hidden lg:block text-xl lg:text-2xl font-bold tracking-wide uppercase mb-6 text-primary">
               ¿Cómo te puedo ayudar?

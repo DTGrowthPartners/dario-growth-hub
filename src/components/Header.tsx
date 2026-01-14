@@ -10,6 +10,7 @@ const navLinks = [
   { href: 'sobre-mi', label: '¿Cómo te puedo ayudar?' },
   { href: 'servicios', label: 'Servicios' },
   { href: 'casos', label: 'Casos de Éxito' },
+  { href: 'testimonios', label: 'Testimonios' },
   { href: 'contacto', label: 'Contacto' },
 ];
 

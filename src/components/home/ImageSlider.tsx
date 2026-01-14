@@ -166,7 +166,7 @@ const ImageSlider = () => {
 
       <div
         ref={sliderRef}
-        className="absolute top-[13vh] md:top-[15vh] w-full h-[calc(100%-160px)] md:h-[calc(100%-200px)] overflow-hidden"
+        className="absolute top-[13vh] md:top-[15vh] w-full h-[calc(100%-20vh)] md:h-[calc(100%-200px)] overflow-hidden"
         style={{
           perspective: "200px",
           perspectiveOrigin: "50% 100%",

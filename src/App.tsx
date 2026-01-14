@@ -32,8 +32,8 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/dt-growth" element={<DTGrowthPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/servicios/meta-ads" element={<MetaAds />} />
-          <Route path="/servicios/desarrollo-web" element={<DesarrolloWeb />} />
+          <Route path="/ads" element={<MetaAds />} />
+          <Route path="/web" element={<DesarrolloWeb />} />
           <Route path="/servicios/sistemas-automatizaciones" element={<SistemasAutomatizaciones />} />
           <Route path="/casos-exito/retail-bebidas" element={<CaseStudyRetailLicores />} />
           <Route path="/casos-exito/escalamiento-trimestral" element={<CaseStudyEscalamientoTrimestral />} />

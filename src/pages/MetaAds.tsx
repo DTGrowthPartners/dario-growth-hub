@@ -159,7 +159,7 @@ const MetaAds = () => {
         {/* Benefits */}
         <section className="py-16 sm:py-20 relative" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
-            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 -mt-8 sm:mt-0">
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 -mt-[2vh] sm:mt-0">
               ¿Por qué nuestro enfoque es <span className="gradient-text">diferente</span>?
             </h2>
 
@@ -189,7 +189,7 @@ const MetaAds = () => {
         {/* Pricing Plans */}
         <section id="pricing-plans" className="py-20">
           <div className="section-container">
-            <div className="text-center mb-16 space-y-4 -mt-16 sm:mt-0">
+            <div className="text-center mb-16 space-y-4 -mt-[3vh] sm:mt-0">
               <h2 className="text-3xl lg:text-4xl font-bold">
                 Elige el <span className="gradient-text">plan</span> que mejor se adapte a tu negocio
               </h2>
@@ -307,7 +307,7 @@ const MetaAds = () => {
         {/* Process */}
         <section className="py-16 sm:py-20 relative">
           <div className="section-container">
-            <div className="text-center mb-16 space-y-4 -mt-16 sm:mt-0">
+            <div className="text-center mb-16 space-y-4 -mt-[3vh] sm:mt-0">
               <h2 className="text-3xl lg:text-4xl font-bold">
                 Nos <span className="gradient-text">especializamos</span> en
               </h2>
@@ -344,7 +344,7 @@ const MetaAds = () => {
         {/* Metrics */}
         <section className="py-20 relative" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
-            <div className="text-center mb-16 -mt-8 sm:mt-0">
+            <div className="text-center mb-16 -mt-[2vh] sm:mt-0">
               <h2 className="text-xl lg:text-4xl font-bold mb-4">
                 Resultados que <span className="gradient-text">hablan por sí solos</span>
               </h2>
@@ -375,7 +375,7 @@ const MetaAds = () => {
         {/* Success Cases */}
         <section className="py-20">
           <div className="section-container">
-            <div className="text-center mb-16 -mt-8 sm:mt-0">
+            <div className="text-center mb-16 -mt-[2vh] sm:mt-0">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                 Casos de <span className="gradient-text">Éxito</span>
               </h2>
@@ -548,7 +548,7 @@ const MetaAds = () => {
         {/* Client Logos */}
         <section className="py-20">
           <div className="section-container">
-            <div className="text-center mb-16 -mt-8 sm:mt-0">
+            <div className="text-center mb-16 -mt-[2vh] sm:mt-0">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                 Empresas que <span className="gradient-text">confían</span> en nosotros
               </h2>
@@ -591,7 +591,7 @@ const MetaAds = () => {
         {/* Testimonials */}
         <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
-            <div className="text-center mb-16 -mt-8 sm:mt-0">
+            <div className="text-center mb-16 -mt-[2vh] sm:mt-0">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
                 Lo que dicen <span className="gradient-text">nuestros clientes</span>
               </h2>

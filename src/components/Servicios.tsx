@@ -13,14 +13,14 @@ const Servicios = () => {
       title: "Meta Ads Performance",
       description: "Campañas de alto rendimiento optimizadas para conversión.",
       highlights: ["Segmentación avanzada", "Testing A/B", "ROAS optimizado", "Reporting detallado"],
-      path: "/servicios/meta-ads",
+      path: "/ads",
     },
     {
       icon: Code,
       title: "Desarrollo Web",
       description: "Sitios web que convierten visitantes en clientes.",
       highlights: ["Landing pages", "Webs corporativas", "E-commerce", "Aplicaciones web"],
-      path: "/servicios/desarrollo-web",
+      path: "/web",
     },
     {
       icon: Zap,
@@ -39,7 +39,7 @@ const Servicios = () => {
   ];
 
   return (
-    <section id="servicios" className="py-12 md:py-24" ref={sectionRef}>
+    <section id="servicios" className="py-[5vh] md:py-24" ref={sectionRef}>
       <div className="section-container">
         <div className="text-center mb-8 md:mb-16 space-y-4">
           <span className="text-primary text-sm font-medium uppercase tracking-wider">

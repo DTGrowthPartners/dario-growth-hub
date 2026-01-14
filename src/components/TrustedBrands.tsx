@@ -1,6 +1,6 @@
 const TrustedBrands = () => {
   return (
-    <section id="marcas" className="pt-0 pb-8 md:pb-16 bg-[#0A0A0A]">
+    <section id="marcas" className="pt-[3vh] pb-[4vh] md:pb-16 bg-[#0A0A0A]">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-6 md:mb-12">
           <h2 className="text-lg md:text-4xl font-bold text-foreground mb-4">
