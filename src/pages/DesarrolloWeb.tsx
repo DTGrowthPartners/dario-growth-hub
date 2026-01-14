@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Smartphone, Package, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -581,6 +582,14 @@ const DesarrolloWeb = () => {
             </div>
           </div>
         </section>
+
+        {/* Contact Form */}
+        <ContactForm
+          sourceDetail="Formulario de Desarrollo Web"
+          title="¿Listo para tu nueva web?"
+          description="Cuéntame sobre tu proyecto y veamos cómo crear una web que convierta visitantes en clientes."
+          backgroundColor="#000000"
+        />
       </main>
 
       <Footer />

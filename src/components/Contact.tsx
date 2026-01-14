@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { BackgroundLines } from '@/components/ui/background-lines';
+import { submitLead, saveLeadLocally } from '@/lib/submitLead';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,6 +25,15 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Guardar lead localmente en JSON (localStorage)
+    saveLeadLocally(formData);
+
+    // Enviar datos al CRM de Os.Dt (no bloquea el flujo si falla)
+    submitLead(formData).catch((error) => {
+      console.error('Error enviando lead al CRM:', error);
+      // No mostramos error al usuario, el lead se guarda localmente y en WhatsApp
+    });
+
     // Create WhatsApp message
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
     const companyText = formData.company ? `\n🏢 Empresa: ${formData.company}` : '';
@@ -39,9 +49,6 @@ ${formData.message}`;
     const whatsappNumber = '573007189383';
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodedMessage}&type=phone_number&app_absent=0`;
-
-    // Simulate brief loading
-    await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Open WhatsApp
     window.open(whatsappUrl, '_blank');

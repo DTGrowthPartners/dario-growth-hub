@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Workflow, Zap, Bot, LineChart, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
@@ -524,6 +525,13 @@ const SistemasAutomatizaciones = () => {
             </div>
           </div>
         </section>
+
+        {/* Contact Form */}
+        <ContactForm
+          sourceDetail="Formulario de Automatizaciones"
+          title="¿Listo para automatizar?"
+          description="Cuéntame sobre tus procesos y veamos cómo podemos automatizarlos para escalar tu operación."
+        />
       </main>
 
       <Footer />

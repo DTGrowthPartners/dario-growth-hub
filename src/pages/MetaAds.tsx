@@ -1,19 +1,73 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { TrendingUp, Target, BarChart3, ArrowRight } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useEffect } from "react";
+import { TrendingUp, Target, BarChart3, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+const testimonials = [
+  {
+    name: "Johana Zapateiro",
+    subtitle: "Cliente · Hace 5 meses",
+    rating: 5,
+    shortReview: "Estoy muy feliz con los resultados. Desde que implementamos las estrategias de marketing y pauta, las ventas han crecido notablemente. Invertir en esta área ha valido totalmente la pena...",
+    fullReview: "Estoy muy feliz con los resultados. Desde que implementamos las estrategias de marketing y pauta, las ventas han crecido notablemente. Invertir en esta área ha valido totalmente la pena. Gracias ser productivos, por su estructura, dirección y enfoque claro, hoy veo mi empresa más organizada y en crecimiento.",
+  },
+  {
+    name: "ACB Fit",
+    subtitle: "3 opiniones · Hace 5 meses",
+    rating: 5,
+    shortReview: "Recomendado con total confianza, profesional, líder, creativo, realmente trasciende su rol 👌🏼 La calidad de su trabajo es excepcional, cuidando cada detalle como si el proyecto fuera suyo...",
+    fullReview: "Recomendado con total confianza, profesional, líder, creativo, realmente trasciende su rol 👌🏼 La calidad de su trabajo es excepcional, cuidando cada detalle como si el proyecto fuera suyo. Siempre va más allá de lo que se le pide, aporta ideas valiosas, guía con criterio y está constantemente dispuesto a apoyar en cada paso dado. Tiene un ojo estratégico, y siempre va un paso adelante ✅ Pero lo que más destaco es su inteligencia y visión, que lo convierten en una pieza clave para cualquier empresa que valore el crecimiento, la innovación y el compromiso real.",
+  },
+  {
+    name: "Tradición Caribe",
+    subtitle: "Cliente · Hace 4 meses",
+    rating: 5,
+    shortReview: "DT nos ayudó a estructurar nuestra estrategia publicitaria en Meta. Gracias a su experiencia, hemos podido atraer a más clientes interesados en nuestros productos...",
+    fullReview: "DT nos ayudó a estructurar nuestra estrategia publicitaria en Meta. Gracias a su experiencia, hemos podido atraer a más clientes interesados en nuestros productos y aumentar nuestras ventas de manera efectiva.",
+  },
+  {
+    name: "Tennis Cartagena",
+    subtitle: "1 opinión · Editado · Hace 5 meses",
+    rating: 5,
+    shortReview: "Excelente trabajo, siempre dispuesto a ayudar y encontrar soluciones innovadoras. Recomendado 100% — me ha ayudado a mejorar mi presencia en línea...",
+    fullReview: "Excelente trabajo, siempre dispuesto a ayudar y encontrar soluciones innovadoras. Recomendado 100% — me ha ayudado a mejorar mi presencia en línea y a alcanzar mis objetivos de marketing digital.",
+  },
+  {
+    name: "Carlos Tatis",
+    subtitle: "Cliente · Hace 4 meses",
+    rating: 5,
+    shortReview: "Realmente brindan mucho conocimiento y facilitan todas las herramientas para que mi empresa obtuviera los buenos resultados.",
+    fullReview: "Realmente brindan mucho conocimiento y facilitan todas las herramientas para que mi empresa obtuviera los buenos resultados.",
+  },
+];
 
 const MetaAds = () => {
+  const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 320;
+      const newScrollLeft = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+      scrollContainerRef.current.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+    }
+  };
+
+  const toggleExpand = (index: number) => {
+    setExpandedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
 
@@ -589,160 +643,83 @@ const MetaAds = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
-          <div className="section-container">
-            <div className="text-center mb-16 -mt-[2vh] sm:mt-0">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                Lo que dicen <span className="gradient-text">nuestros clientes</span>
+        <section className="py-[5vh] md:py-24 bg-[#0A0A0A]">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Header */}
+            <div className="text-center mb-8 md:mb-12 space-y-2 md:space-y-4">
+              <span className="text-primary text-sm font-medium uppercase tracking-wider">
+                Testimonios
+              </span>
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground italic">
+                Lo que dicen nuestros{' '}
+                <span className="text-[#027FFF]">clientes</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
-                Reseñas verificadas de Google.
-              </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8 items-start">
-              {/* Left Panel */}
-              <div className="space-y-6 lg:col-span-1 mb-8 lg:mb-0">
-                <div className="flex items-start space-x-4">
-                  <img
-                    decoding="async"
-                    src="/images/gmblogo.svg"
-                    alt="DT Growth Partners place picture"
-                    className="w-12 h-12 flex-shrink-0"
-                  />
-                  <div className="space-y-2">
-                    <div className="text-lg font-semibold">
-                      <a
-                        href="https://search.google.com/local/reviews?placeid=ChIJy0_O3nkv9o4RcYDpp8cBRaU"
-                        target="_blank"
-                        rel="nofollow noopener"
-                        className="hover:text-primary transition-colors"
-                      >
-                        DT Growth Partners | Firma Consultora
-                      </a>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-2xl font-bold text-primary">5.0</span>
-                      <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
+            {/* Testimonials Horizontal Scroll with Arrows */}
+            <div className="relative">
+              {/* Left Arrow */}
+              <button
+                onClick={() => scroll('left')}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#111111]/80 hover:bg-[#222222] border border-[#333333] rounded-full p-2 -ml-4 hidden md:flex items-center justify-center transition-colors"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                onClick={() => scroll('right')}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#111111]/80 hover:bg-[#222222] border border-[#333333] rounded-full p-2 -mr-4 hidden md:flex items-center justify-center transition-colors"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+
+              <div
+                ref={scrollContainerRef}
+                className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide snap-x snap-mandatory"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {testimonials.map((testimonial, index) => {
+                  const isExpanded = expandedCards.has(index);
+                  const hasMoreContent = testimonial.shortReview !== testimonial.fullReview;
+
+                  return (
+                    <div
+                      key={index}
+                      className="bg-[#111111] border border-[#222222] rounded-lg p-6 space-y-4 flex-shrink-0 w-[300px] md:w-[350px] snap-start"
+                    >
+                      {/* Stars */}
+                      <div className="flex items-center space-x-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <svg key={i} className="w-4 h-4 text-[#027FFF] fill-current" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                           </svg>
                         ))}
                       </div>
+
+                      {/* Review */}
+                      <blockquote className="text-sm text-gray-300 italic leading-relaxed">
+                        "{isExpanded ? testimonial.fullReview : testimonial.shortReview}"
+                      </blockquote>
+
+                      {/* Ver más / Ver menos link */}
+                      {hasMoreContent && (
+                        <button
+                          onClick={() => toggleExpand(index)}
+                          className="text-[#027FFF] text-sm hover:underline block cursor-pointer"
+                        >
+                          {isExpanded ? 'Ver menos' : 'Ver más'}
+                        </button>
+                      )}
+
+                      {/* Author */}
+                      <div className="pt-2 border-t border-[#222222]">
+                        <div className="font-semibold text-sm text-white">{testimonial.name}</div>
+                        <div className="text-xs text-gray-400">{testimonial.subtitle}</div>
+                      </div>
                     </div>
-                    <div className="text-muted-foreground">Basado en 5 reseñas.</div>
-                    <div className="text-sm text-muted-foreground">
-                      powered by <span className="font-bold text-blue-500">G</span><span className="font-bold text-red-500">o</span><span className="font-bold text-yellow-500">o</span><span className="font-bold text-blue-500">g</span><span className="font-bold text-green-500">l</span><span className="font-bold text-red-500">e</span>
-                    </div>
-                    <Button
-                      variant="outline"
-                      className="mt-4"
-                      onClick={() => window.open('https://search.google.com/local/writereview?placeid=ChIJy0_O3nkv9o4RcYDpp8cBRaU', '_blank')}
-                    >
-                      Valóranos en Google
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Carousel */}
-              <div className="lg:col-span-2 w-full overflow-hidden">
-                <Carousel
-                  opts={{
-                    align: "start",
-                    loop: true,
-                  }}
-                  plugins={[
-                    Autoplay({
-                      delay: 5000,
-                    }),
-                  ]}
-                  className="w-full"
-                >
-                  <CarouselContent className="-ml-4">
-                    {[
-                      {
-                        name: "johana zapateiro",
-                        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWpFwf5p8TI48NOKCyDkMvn8iTrkkLb7gGZ_vsvDmgkxsrYtio=s56-c-rp-mo-br100",
-                        rating: 5,
-                        review: "Estoy muy feliz con los resultados. Desde que implementamos las estrategias de marketing y pauta, las ventas han crecido notablemente. Invertir en esta área ha valido totalmente la pena. Gracias ser productivos, por su estructura, dirección y enfoque claro, hoy veo mi empresa más organizada y en crecimiento.",
-                        date: "Hace 6 meses",
-                      },
-                      {
-                        name: "ACB Fit",
-                        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjVmPx7v-FlTPI1tc8NdpdveH6n2OysWtLJeD17GPxesoYcLKc8M=s56-c-rp-mo-br100",
-                        rating: 5,
-                        review: "Recomendado con total confianza, profesional, líder, creativo, realmente trasciende su rol. La calidad de su trabajo es excepcional, cuidando cada detalle como si el proyecto fuera suyo, Siempre va más allá de lo que se le pide.",
-                        date: "Hace 6 meses",
-                      },
-                      {
-                        name: "Tennis Cartagena",
-                        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjUCHA2cF3V_kJUnHwYVgDT0YkckM0C09RkDtwojeAH1uel_PQ=s56-c-rp-mo-br100",
-                        rating: 5,
-                        review: "Excelente trabajo, siempre dispuesto a ayudar y encontrar soluciones innovadoras. recomendado 100% me ha ayudado a mejorar mi presencia en linea y a alcanzar mis objetivos de marketing digital.",
-                        date: "Hace 6 meses",
-                      },
-                      {
-                        name: "Carlos Tatis",
-                        avatar: "https://lh3.googleusercontent.com/a/ACg8ocKUCTi_YTX7OCwWXREHf5BXYNh60_wGheWZUY_y4_Cf-Df3=s56-c-rp-mo-br100",
-                        rating: 5,
-                        review: "Realmente brindan mucho conocimiento y facilitan todas las herramientas para que mi empresa obtuviera los buenos resultados",
-                        date: "Hace 8 meses",
-                      },
-                      {
-                        name: "Jonathan Indalecio Alvarez",
-                        avatar: "https://lh3.googleusercontent.com/a-/ALV-UjWiRYo5bUwejSzaoVGTJ17ICXJivC-ZBVvQZAG63mkLPkpXAM6U=s56-c-rp-mo-br100",
-                        rating: 5,
-                        review: "Lo mejor para pautar en las redes sociales",
-                        date: "Hace 6 meses",
-                      }
-                    ].map((testimonial) => (
-                      <CarouselItem key={testimonial.name} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                        <Card className="bg-card/80 border-primary/20 backdrop-blur-sm h-full hover:border-primary/50 transition-all duration-300">
-                          <CardContent className="p-6 space-y-4 h-full flex flex-col">
-                            <div className="flex items-center space-x-1">
-                              {[...Array(testimonial.rating)].map((_, i) => (
-                                <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                </svg>
-                              ))}
-                            </div>
-
-                            <blockquote className="text-muted-foreground italic flex-grow max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-primary/30 scrollbar-track-transparent">
-                              "{testimonial.review}"
-                            </blockquote>
-
-                            <div className="flex items-center justify-between mt-auto">
-                              <div className="flex items-center space-x-3">
-                                <img
-                                  src={testimonial.avatar}
-                                  alt={`${testimonial.name} avatar`}
-                                  className="w-10 h-10 rounded-full ring-2 ring-primary/30"
-                                />
-                                <div>
-                                  <div className="font-semibold text-sm">{testimonial.name}</div>
-                                  <div className="text-xs text-muted-foreground">{testimonial.date}</div>
-                                </div>
-                              </div>
-                              <div className="flex items-center space-x-1">
-                                <svg className="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                                </svg>
-                                <span className="text-xs text-primary">Google</span>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-0 bg-primary/10 border-primary/50 text-primary hover:bg-primary hover:text-white hover:border-primary" />
-                  <CarouselNext className="right-0 bg-primary/10 border-primary/50 text-primary hover:bg-primary hover:text-white hover:border-primary" />
-                </Carousel>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -791,6 +768,13 @@ const MetaAds = () => {
             </div>
           </div>
         </section>
+
+        {/* Contact Form */}
+        <ContactForm
+          sourceDetail="Formulario de Meta Ads"
+          title="¿Listo para escalar tus campañas?"
+          description="Cuéntame sobre tu negocio y veamos cómo podemos mejorar tus resultados en Meta Ads."
+        />
       </main>
 
       <Footer />
