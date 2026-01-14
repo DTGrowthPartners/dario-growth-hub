@@ -15,6 +15,7 @@ const Contact = () => {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     company: '',
     message: '',
   });
@@ -26,10 +27,11 @@ const Contact = () => {
     // Create WhatsApp message
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
     const companyText = formData.company ? `\n🏢 Empresa: ${formData.company}` : '';
+    const phoneText = formData.phone ? `\n📱 Teléfono: ${formData.phone}` : '';
 
     const whatsappMessage = `Hola! Soy ${fullName} y me gustaría contactarte.
 
-📧 Email: ${formData.email}${companyText}
+📧 Email: ${formData.email}${phoneText}${companyText}
 
 💬 Mensaje:
 ${formData.message}`;
@@ -51,7 +53,7 @@ ${formData.message}`;
     // Reset form after showing success
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ firstName: '', lastName: '', email: '', company: '', message: '' });
+      setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', message: '' });
     }, 3000);
   };
 
@@ -126,6 +128,17 @@ ${formData.message}`;
                       value={formData.email}
                       onChange={handleChange}
                       required
+                    />
+                  </LabelInputContainer>
+                  <LabelInputContainer>
+                    <Label htmlFor="phone">Teléfono</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      placeholder="+57 300 123 4567"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
                     />
                   </LabelInputContainer>
                   <LabelInputContainer>
