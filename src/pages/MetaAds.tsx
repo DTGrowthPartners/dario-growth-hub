@@ -157,14 +157,7 @@ const MetaAds = () => {
         </section>
 
         {/* Benefits */}
-        <section className="py-16 sm:py-20 bg-gradient-card relative">
-          {/* Top Gradient for smooth transition */}
-          <div
-            className="absolute top-0 left-0 right-0 h-32 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, hsl(0 0% 7%) 0%, transparent 100%)'
-            }}
-          ></div>
+        <section className="py-16 sm:py-20 relative" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
             <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16 -mt-8 sm:mt-0">
               ¿Por qué nuestro enfoque es <span className="gradient-text">diferente</span>?
@@ -346,12 +339,6 @@ const MetaAds = () => {
               ))}
             </div>
           </div>
-          <div
-            className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-            style={{
-              background: 'linear-gradient(to bottom, transparent, #0A0A0A)'
-            }}
-          ></div>
         </section>
 
         {/* Metrics */}
@@ -414,7 +401,7 @@ const MetaAds = () => {
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
 
-                  <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <div className="rounded-lg p-4 space-y-2" style={{ backgroundColor: '#0A0A0A' }}>
                     <div className="text-sm text-muted-foreground">El Desafío</div>
                     <p className="text-sm">
                       Cliente con meses de inversión en Meta Ads sin resultados. Campañas enfocadas en alcance sin conversiones configuradas.
@@ -465,7 +452,7 @@ const MetaAds = () => {
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
 
-                  <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <div className="rounded-lg p-4 space-y-2" style={{ backgroundColor: '#0A0A0A' }}>
                     <div className="text-sm text-muted-foreground">El Contexto</div>
                     <p className="text-sm">
                       Después de estabilizar campañas, necesitábamos escalar sin desperdiciar presupuesto manteniendo el ROAS.
@@ -520,7 +507,7 @@ const MetaAds = () => {
                     <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                   </div>
 
-                  <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <div className="rounded-lg p-4 space-y-2" style={{ backgroundColor: '#0A0A0A' }}>
                     <div className="text-sm text-muted-foreground">El Desafío</div>
                     <p className="text-sm">
                       Restaurante de comida típica caribeña con bajo reconocimiento local. La gente no sabía dónde estaba ubicado.
@@ -764,7 +751,7 @@ const MetaAds = () => {
         {/* CTA */}
         <section className="py-20">
           <div className="section-container">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-card border border-border/50 p-12 lg:p-16">
+            <div className="relative overflow-hidden rounded-3xl border border-border/50 p-12 lg:p-16" style={{ backgroundColor: '#0A0A0A' }}>
               <video
                 className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-50"
                 autoPlay

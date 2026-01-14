@@ -77,7 +77,7 @@ const CaseStudyEscalamientoTrimestral = () => {
 
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-20 sm:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+        <section className="py-20 sm:py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
           <FireworksBackground
             className="absolute inset-0 z-0"
             population={2}
@@ -87,11 +87,6 @@ const CaseStudyEscalamientoTrimestral = () => {
             particleSpeed={{ min: 2, max: 5 }}
             particleSize={{ min: 1, max: 3 }}
           />
-          {/* Gradient overlay for better fireworks visibility */}
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/60" />
-          </div>
           <div className="section-container relative z-10">
             <Button
               variant="ghost"
@@ -137,7 +132,7 @@ const CaseStudyEscalamientoTrimestral = () => {
         </section>
 
         {/* Context Section */}
-        <section className="py-20 bg-gradient-card">
+        <section className="py-20" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl lg:text-4xl font-bold mb-8">
@@ -202,7 +197,7 @@ const CaseStudyEscalamientoTrimestral = () => {
         </section>
 
         {/* Results Section */}
-        <section className="py-20 bg-gradient-card relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
           <div className="section-container relative z-10">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-16">
@@ -242,8 +237,7 @@ const CaseStudyEscalamientoTrimestral = () => {
                 </Card>
 
                 {/* Q2 */}
-                <Card className="bg-gradient-to-br from-primary/20 via-primary/10 to-background border-primary/30 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent" />
+                <Card className="border-primary/30 relative overflow-hidden" style={{ backgroundColor: '#0A0A0A' }}>
                   <CardContent className="p-8 text-center space-y-6 relative z-10">
                     <div className="flex flex-col items-center justify-center gap-2">
                       <div className="flex items-center gap-2">
@@ -377,7 +371,7 @@ const CaseStudyEscalamientoTrimestral = () => {
           >
             <source src="/images/fondo-seccion-DT-OS2.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/70 to-background/80" />
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 10, 10, 0.8)' }} />
           <div className="section-container relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <h2 className="text-3xl lg:text-5xl font-bold">
@@ -392,7 +386,7 @@ const CaseStudyEscalamientoTrimestral = () => {
                 <Button
                   size="lg"
                   className="btn-primary group text-lg px-8"
-                  onClick={() => window.open('https://wa.me/573007189383?text=Hola%20DT%20Growth%20Partners,%20vi%20el%20caso%20de%20escalamiento%20trimestral%20y%20quiero%20escalar%20mi%20negocio', '_blank')}
+                  onClick={() => window.open('https://wa.me/573007189383?text=Hola%20Dairo,%20vi%20el%20caso%20de%20escalamiento%20trimestral%20y%20quiero%20escalar%20mi%20negocio', '_blank')}
                 >
                   Agendar consultoría gratuita
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
