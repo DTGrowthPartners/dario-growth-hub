@@ -153,10 +153,10 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <section id="webs-portafolio" className="relative w-full h-[38vh] md:h-screen overflow-hidden bg-black flex flex-col">
+    <section id="webs-portafolio" className="relative w-full h-[42vh] md:h-screen overflow-hidden bg-black flex flex-col">
       {/* Title */}
-      <div className="absolute top-3 md:top-8 left-1/2 -translate-x-1/2 z-10 space-y-0.5 md:space-y-2 w-full px-4">
-        <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-center leading-tight">
+      <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-10 space-y-1 md:space-y-2 w-full px-4">
+        <h2 className="text-lg md:text-4xl lg:text-5xl font-bold text-center leading-tight">
           Webs que <span className="gradient-text">convierten</span>
         </h2>
         <p className="text-[10px] md:text-lg lg:text-xl text-neutral-400 text-center max-w-2xl mx-auto px-2 md:px-4">
@@ -166,7 +166,7 @@ const ImageSlider = () => {
 
       <div
         ref={sliderRef}
-        className="absolute top-[9vh] md:top-[15vh] w-full h-[calc(100%-10vh)] md:h-[calc(100%-200px)] overflow-hidden"
+        className="absolute top-[10vh] md:top-[15vh] w-full h-[calc(100%-12vh)] md:h-[calc(100%-200px)] overflow-hidden"
         style={{
           perspective: "200px",
           perspectiveOrigin: "50% 100%",
@@ -175,7 +175,7 @@ const ImageSlider = () => {
         {images.map((image, index) => (
           <div
             key={index}
-            className="slider-card absolute top-1/2 left-1/2 w-[55%] sm:w-[50%] md:w-1/2 aspect-video md:aspect-auto md:h-[500px] rounded-lg overflow-hidden bg-black cursor-grab active:cursor-grabbing select-none"
+            className="slider-card absolute top-1/2 left-1/2 w-[60%] sm:w-[55%] md:w-1/2 aspect-video md:aspect-auto md:h-[500px] rounded-lg overflow-hidden bg-black cursor-grab active:cursor-grabbing select-none"
             style={{
               transform: "translate3d(-50%, -50%, 0px)",
               opacity: 0,
@@ -188,11 +188,11 @@ const ImageSlider = () => {
               className="absolute w-full h-full object-cover object-top opacity-75"
               draggable={false}
             />
-            <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full overflow-hidden flex flex-col items-center gap-1 md:gap-6">
-              <h2 className="text-center text-[3.5vw] sm:text-[3vw] md:text-[4vw] font-sans font-bold tracking-tight uppercase text-white px-2">
+            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full overflow-hidden flex flex-col items-center gap-1.5 md:gap-6">
+              <h2 className="text-center text-[3.2vw] sm:text-[2.8vw] md:text-[4vw] font-sans font-bold tracking-tight uppercase text-white px-2">
                 {splitTextIntoSpans(image.title)}
               </h2>
-              <Button className="bg-white text-black hover:bg-white/90 group slider-button opacity-0 text-[8px] md:text-base px-1.5 py-0.5 md:px-6 md:py-2 h-auto" asChild>
+              <Button className="bg-white text-black hover:bg-white/90 group slider-button opacity-0 text-[8px] md:text-base px-2 py-0.5 md:px-6 md:py-2 h-auto" asChild>
                 <a
                   href={image.url}
                   target="_blank"
