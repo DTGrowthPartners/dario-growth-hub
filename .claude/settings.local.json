@@ -4,7 +4,8 @@
       "Bash(xargs:*)",
       "Bash(grep:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm run dev:*)"
     ]
   }
 }

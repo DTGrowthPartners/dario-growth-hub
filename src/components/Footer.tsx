@@ -44,7 +44,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div>
             <Link to="/">
-              <img src={logoImage} alt="Dario Traslaviña" className="h-8 mb-4 brightness-0 invert hover:opacity-80 transition-opacity" />
+              <img src={logoImage} alt="Dario Traslaviña" className="h-6 mb-4 brightness-0 invert hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-white text-sm leading-relaxed">
               Ayudando a empresas ambiciosas a escalar

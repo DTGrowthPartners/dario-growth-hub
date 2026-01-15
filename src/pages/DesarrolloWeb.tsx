@@ -548,11 +548,11 @@ const DesarrolloWeb = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-black">
-          <div className="section-container">
-            <div className="relative overflow-hidden rounded-3xl bg-black border border-border/50 p-12 lg:p-16">
+        <section className="py-12 md:py-20 bg-black">
+          <div className="section-container px-4 md:px-8">
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-black border border-border/50 p-8 md:p-12 lg:p-16">
               <video
-                className="absolute inset-0 w-full h-full object-cover rounded-3xl opacity-50"
+                className="absolute inset-0 w-full h-full object-cover rounded-2xl md:rounded-3xl opacity-50"
                 autoPlay
                 loop
                 muted
@@ -561,21 +561,20 @@ const DesarrolloWeb = () => {
                 <source src="/images/fondo-seccion-DT-OS2.mp4" type="video/mp4" />
               </video>
 
-              <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6 px-4">
-                <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold whitespace-nowrap">
+              <div className="relative z-10 max-w-2xl mx-auto text-center space-y-4 md:space-y-6">
+                <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold">
                   ¿Listo para <span className="gradient-text">construir</span>?
                 </h2>
 
-                <p className="text-lg text-muted-foreground">
+                <p className="text-sm md:text-lg text-muted-foreground px-2">
                   Conversemos sobre tu proyecto. Primera consulta sin compromiso.
                 </p>
 
-                <Button size="default" className="btn-primary group sm:h-11 sm:px-8 sm:text-base" asChild>
+                <Button size="default" className="btn-primary group h-10 px-5 text-sm md:h-11 md:px-8 md:text-base" asChild>
                   <a href="https://api.whatsapp.com/send/?phone=573007189383&text=Hola!%20Me%20interesa%20desarrollar%20una%20web%20que%20convierta%20visitantes%20en%20clientes.%20¿Podr%C3%ADamos%20agendar%20una%20consulta%20estrat%C3%A9gica%3F&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-                    <Code className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline">Agendar consulta estratégica</span>
-                    <span className="sm:hidden">Agendar consulta</span>
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
+                    <Code className="mr-2 h-4 w-4" />
+                    Agendar consulta
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
               </div>
