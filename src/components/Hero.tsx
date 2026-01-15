@@ -1,6 +1,5 @@
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { ArrowRight } from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BackgroundBeams } from '@/components/BackgroundBeams';
 
 const Hero = () => {

@@ -1,4 +1,5 @@
 import darioImg from '../assets/dario-about-desenfoque.png';
+import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 
 const stats = [
   { value: '+$5M USD', label: 'en ventas generadas para clientes' },
@@ -117,14 +118,14 @@ const About = () => {
 
             {/* CTA Button */}
             <div className="mt-6 lg:mt-12 text-left px-4 lg:px-0">
-              <a
-                href="https://api.whatsapp.com/send/?phone=573007189383&text=Hola%2C%20Dairo.%20Te%20contacto%20desde%20tu%20sitio%20web%20y%20estoy%20interesado%20en%20una%20consultor%C3%ADa%20sobre%20%5Bespecificar%20tema%5D&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors duration-200"
+              <RippleButton
+                size="default"
+                onClick={() => window.open('https://api.whatsapp.com/send/?phone=573007189383&text=Hola%2C%20Dairo.%20Te%20contacto%20desde%20tu%20sitio%20web%20y%20estoy%20interesado%20en%20una%20consultor%C3%ADa%20sobre%20%5Bespecificar%20tema%5D&type=phone_number&app_absent=0', '_blank')}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3"
               >
                 Hablemos por WhatsApp
-              </a>
+                <RippleButtonRipples />
+              </RippleButton>
               <p className="mt-4 text-xs text-muted-foreground/60">Respuesta en menos de 24 horas.</p>
             </div>
           </div>

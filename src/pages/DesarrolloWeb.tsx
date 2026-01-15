@@ -7,7 +7,7 @@ import { Code, Smartphone, Package, ArrowRight, CheckCircle2 } from "lucide-reac
 import { BackgroundBeamsWithCollision } from "@/components/ui/shadcn-io/background-beams-with-collision";
 import { BackgroundBeams } from "@/components/ui/shadcn-io/background-beams";
 import { RetroGrid } from "@/components/ui/shadcn-io/retro-grid";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ImageSlider from "@/components/home/ImageSlider";
 import {
   Dialog,
