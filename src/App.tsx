@@ -16,6 +16,7 @@ import SistemasAutomatizaciones from "./pages/SistemasAutomatizaciones";
 import CaseStudyRetailLicores from "./pages/CaseStudyRetailLicores";
 import CaseStudyEscalamientoTrimestral from "./pages/CaseStudyEscalamientoTrimestral";
 import CaseStudyRestaurante from "./pages/CaseStudyRestaurante";
+import LinksPage from "./pages/LinksPage";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/casos-exito/retail-bebidas" element={<CaseStudyRetailLicores />} />
           <Route path="/casos-exito/escalamiento-trimestral" element={<CaseStudyEscalamientoTrimestral />} />
           <Route path="/casos-exito/reconocimiento-local-restaurante" element={<CaseStudyRestaurante />} />
+          <Route path="/links" element={<LinksPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
