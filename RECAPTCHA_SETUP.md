@@ -19,11 +19,13 @@ Se ha integrado reCAPTCHA v2 en todos los formularios de contacto del proyecto p
 Las claves de reCAPTCHA están configuradas en el archivo `.env.local`:
 
 ```env
-VITE_RECAPTCHA_SITE_KEY=6LdNpU8sAAAAJV0ZJYyorkdSJp8f68yplrOCaTR
-VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
+VITE_RECAPTCHA_SITE_KEY=6LdNpU8sAAAAAJV02JYyorkdSJp8F68yplrOCaTR
+VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
 ```
 
 > ⚠️ **IMPORTANTE**: El archivo `.env.local` está incluido en `.gitignore` y NO se subirá a GitHub. Asegúrate de configurar estas variables en tu entorno de producción.
+>
+> ✅ **NOTA**: Estas claves funcionan tanto para `www.dairotraslavina.com` como para `dairotraslavina.com`
 
 ## 📦 Archivos Creados/Modificados
 
@@ -159,19 +161,18 @@ vercel env add VITE_RECAPTCHA_SECRET_KEY
 **Netlify:**
 ```bash
 # En Netlify UI: Site settings > Environment variables
-VITE_RECAPTCHA_SITE_KEY=6LdNpU8sAAAAJV0ZJYyorkdSJp8f68yplrOCaTR
-VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
+VITE_RECAPTCHA_SITE_KEY=6LdNpU8sAAAAAJV02JYyorkdSJp8F68yplrOCaTR
+VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
 ```
 
 ### Dominios Autorizados
 
-Asegúrate de agregar tu dominio de producción en la consola de Google reCAPTCHA:
-
-1. Ve a https://www.google.com/recaptcha/admin
-2. Selecciona tu sitio
-3. En "Dominios", agrega:
+✅ **Ya configurado**: Las claves actuales funcionan para ambos dominios:
    - `localhost` (para desarrollo)
-   - `dairotraslavina.com` (tu dominio de producción)
+   - `dairotraslavina.com`
+   - `www.dairotraslavina.com`
+
+Si necesitas agregar más dominios, ve a https://www.google.com/recaptcha/admin
 
 ## 🧪 Pruebas
 
