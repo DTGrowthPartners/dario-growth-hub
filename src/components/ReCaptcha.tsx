@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { RECAPTCHA_CONFIG } from '@/config/recaptcha';
 
 interface ReCaptchaProps {
   onVerify: (token: string) => void;
@@ -14,14 +15,18 @@ export const ReCaptcha = ({ onVerify, onExpired, onError }: ReCaptchaProps) => {
     const loadRecaptcha = () => {
       if (window.grecaptcha && recaptchaRef.current && widgetIdRef.current === null) {
         try {
+          console.log('🔑 Cargando reCAPTCHA con site key:', RECAPTCHA_CONFIG.siteKey.substring(0, 20) + '...');
+
           widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
-            sitekey: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
+            sitekey: RECAPTCHA_CONFIG.siteKey,
             callback: onVerify,
             'expired-callback': onExpired,
             'error-callback': onError,
           });
+
+          console.log('✅ reCAPTCHA renderizado exitosamente');
         } catch (error) {
-          console.error('Error rendering reCAPTCHA:', error);
+          console.error('❌ Error rendering reCAPTCHA:', error);
         }
       }
     };

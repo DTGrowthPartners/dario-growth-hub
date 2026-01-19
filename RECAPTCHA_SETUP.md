@@ -33,7 +33,8 @@ VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
 
 1. **`.env.local`** - Variables de entorno con las claves de reCAPTCHA
 2. **`src/components/ReCaptcha.tsx`** - Componente React para renderizar reCAPTCHA
-3. **`src/lib/verifyRecaptcha.ts`** - Utilidad para verificación del lado del servidor (referencia)
+3. **`src/config/recaptcha.ts`** - Configuración centralizada con fallback hardcoded
+4. **`src/lib/verifyRecaptcha.ts`** - Utilidad para verificación del lado del servidor (referencia)
 
 ### Archivos Modificados
 
@@ -148,9 +149,18 @@ Si tienes acceso al backend del CRM (`https://os.dtgrowthpartners.com`), puedes:
 
 ## 🚀 Despliegue en Producción
 
-### Variables de Entorno
+### ✅ Funcionamiento Automático
 
-Configura estas variables en tu plataforma de hosting:
+**Buena noticia**: La integración está configurada para funcionar automáticamente en producción SIN necesidad de configurar variables de entorno.
+
+La clave pública (Site Key) está incluida como fallback en `src/config/recaptcha.ts`, por lo que:
+- ✅ Funciona en desarrollo (localhost)
+- ✅ Funciona en producción (sin configuración adicional)
+- ✅ Funciona en ambos dominios: `dairotraslavina.com` y `www.dairotraslavina.com`
+
+### Variables de Entorno (Opcional)
+
+Si prefieres usar variables de entorno, puedes configurarlas en tu plataforma de hosting:
 
 **Vercel:**
 ```bash
@@ -164,6 +174,8 @@ vercel env add VITE_RECAPTCHA_SECRET_KEY
 VITE_RECAPTCHA_SITE_KEY=6LdNpU8sAAAAAJV02JYyorkdSJp8F68yplrOCaTR
 VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
 ```
+
+> **Nota**: Si no configuras las variables de entorno, el sistema usará automáticamente las claves hardcoded en el código.
 
 ### Dominios Autorizados
 
@@ -229,6 +241,29 @@ Para máxima seguridad, implementa la verificación del servidor.
 
 ## 🔧 Solución de Problemas
 
+### 🚨 El reCAPTCHA no aparece en producción (pero sí en localhost)
+
+**Problema Común**: Este es el error más frecuente cuando se despliega a producción.
+
+**Solución Implementada**:
+- ✅ La clave pública está hardcoded como fallback en `src/config/recaptcha.ts`
+- ✅ Ya no es necesario configurar variables de entorno
+- ✅ Funciona automáticamente en producción
+
+**Si aún no aparece, verifica**:
+1. Abre la consola del navegador (F12)
+2. Busca el mensaje: `🔑 Cargando reCAPTCHA con site key: 6LdNpU8sAAAAAJV02JYy...`
+3. Verifica que no haya errores relacionados con reCAPTCHA
+4. Asegúrate de que el dominio esté en la lista de dominios autorizados en Google reCAPTCHA
+
+**Checklist de depuración**:
+```
+✅ El script de reCAPTCHA está en index.html
+✅ src/config/recaptcha.ts existe y tiene la clave correcta
+✅ El componente ReCaptcha importa RECAPTCHA_CONFIG
+✅ El dominio está autorizado en console.cloud.google.com
+```
+
 ### Error: "grecaptcha is not defined"
 
 **Solución**: Asegúrate de que el script de reCAPTCHA esté cargado en `index.html`:
@@ -239,14 +274,21 @@ Para máxima seguridad, implementa la verificación del servidor.
 
 ### Error: "Invalid site key"
 
-**Solución**: Verifica que `VITE_RECAPTCHA_SITE_KEY` esté correctamente configurada en `.env.local`
+**Causas posibles**:
+1. La clave en `src/config/recaptcha.ts` es incorrecta
+2. El dominio no está autorizado en Google reCAPTCHA Console
 
-### El reCAPTCHA no aparece
+**Solución**:
+- Verifica que la clave sea: `6LdNpU8sAAAAAJV02JYyorkdSJp8F68yplrOCaTR`
+- Autoriza tu dominio en https://www.google.com/recaptcha/admin
+
+### El reCAPTCHA no aparece (general)
 
 **Solución**:
 1. Verifica la consola del navegador por errores
 2. Asegúrate de que el dominio esté autorizado en Google reCAPTCHA
-3. Verifica que el script se cargue correctamente
+3. Verifica que el script se cargue correctamente (Network tab)
+4. Limpia caché y recarga (Ctrl + Shift + R)
 
 ### El formulario no se envía
 
@@ -254,6 +296,7 @@ Para máxima seguridad, implementa la verificación del servidor.
 1. Abre la consola del navegador
 2. Verifica que el token se genere al completar el reCAPTCHA
 3. Revisa que `recaptchaToken` no esté vacío
+4. Busca el mensaje `✅ reCAPTCHA renderizado exitosamente`
 
 ## 📞 Soporte
 
