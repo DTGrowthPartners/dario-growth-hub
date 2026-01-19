@@ -32,17 +32,25 @@ VITE_RECAPTCHA_SECRET_KEY=6LdNpU8sAAAAAP5ZneDSJOBSRJJu2jdgGfOdIBKB
 ### Nuevos Archivos
 
 1. **`.env.local`** - Variables de entorno con las claves de reCAPTCHA
-2. **`src/components/ReCaptcha.tsx`** - Componente React para renderizar reCAPTCHA
+2. **`src/components/ReCaptcha.tsx`** - Componente React optimizado para renderizar reCAPTCHA sin parpadeos
 3. **`src/config/recaptcha.ts`** - Configuración centralizada con fallback hardcoded
 4. **`src/lib/verifyRecaptcha.ts`** - Utilidad para verificación del lado del servidor (referencia)
 
 ### Archivos Modificados
 
 1. **`index.html`** - Script de reCAPTCHA agregado
-2. **`src/components/Contact.tsx`** - Integración de reCAPTCHA
-3. **`src/components/ContactForm.tsx`** - Integración de reCAPTCHA
+2. **`src/components/Contact.tsx`** - Integración de reCAPTCHA con callbacks optimizados (useCallback)
+3. **`src/components/ContactForm.tsx`** - Integración de reCAPTCHA con callbacks optimizados (useCallback)
 4. **`src/lib/submitLead.ts`** - Soporte para token de reCAPTCHA
 5. **`package.json`** - Dependencia `@types/grecaptcha` agregada
+
+### Optimizaciones de Rendimiento
+
+El componente ReCaptcha está optimizado para evitar parpadeos y re-renderizados innecesarios:
+- ✅ Usa `React.memo` para evitar re-renders cuando las props no cambian
+- ✅ Usa `useRef` para mantener callbacks actualizados sin re-renderizar
+- ✅ Los componentes padre usan `useCallback` para memoizar las funciones callback
+- ✅ El widget de reCAPTCHA se monta una sola vez y persiste durante toda la sesión del formulario
 
 ## 🛠️ Cómo Funciona
 
@@ -297,6 +305,23 @@ Para máxima seguridad, implementa la verificación del servidor.
 2. Verifica que el token se genere al completar el reCAPTCHA
 3. Revisa que `recaptchaToken` no esté vacío
 4. Busca el mensaje `✅ reCAPTCHA renderizado exitosamente`
+
+### El reCAPTCHA parpadea al escribir en el formulario
+
+**Problema**: El widget de reCAPTCHA desaparece y reaparece al llenar los campos del formulario.
+
+**Causa**: Re-renderizados innecesarios del componente ReCaptcha causados por callbacks que se recrean en cada render.
+
+**Solución Implementada**:
+- ✅ El componente `ReCaptcha` usa `React.memo` para evitar re-renders innecesarios
+- ✅ Los callbacks (`onVerify`, `onExpired`, `onError`) están memoizados con `useCallback`
+- ✅ Las referencias a los callbacks se mantienen estables usando `useRef`
+- ✅ El widget se monta una sola vez y no se resetea hasta que se envíe el formulario
+
+**Si el problema persiste**:
+1. Verifica que los componentes `Contact.tsx` y `ContactForm.tsx` usen `useCallback`
+2. Asegúrate de que `ReCaptcha.tsx` use `React.memo`
+3. Limpia el caché del navegador y recarga la página
 
 ## 📞 Soporte
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { RECAPTCHA_CONFIG } from '@/config/recaptcha';
 
 interface ReCaptchaProps {
@@ -7,9 +7,15 @@ interface ReCaptchaProps {
   onError?: () => void;
 }
 
-export const ReCaptcha = ({ onVerify, onExpired, onError }: ReCaptchaProps) => {
+export const ReCaptcha = memo(({ onVerify, onExpired, onError }: ReCaptchaProps) => {
   const recaptchaRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<number | null>(null);
+  const callbacksRef = useRef({ onVerify, onExpired, onError });
+
+  // Actualizar las callbacks sin causar re-render
+  useEffect(() => {
+    callbacksRef.current = { onVerify, onExpired, onError };
+  }, [onVerify, onExpired, onError]);
 
   useEffect(() => {
     const loadRecaptcha = () => {
@@ -19,9 +25,9 @@ export const ReCaptcha = ({ onVerify, onExpired, onError }: ReCaptchaProps) => {
 
           widgetIdRef.current = window.grecaptcha.render(recaptchaRef.current, {
             sitekey: RECAPTCHA_CONFIG.siteKey,
-            callback: onVerify,
-            'expired-callback': onExpired,
-            'error-callback': onError,
+            callback: (token: string) => callbacksRef.current.onVerify(token),
+            'expired-callback': () => callbacksRef.current.onExpired?.(),
+            'error-callback': () => callbacksRef.current.onError?.(),
           });
 
           console.log('✅ reCAPTCHA renderizado exitosamente');
@@ -46,16 +52,11 @@ export const ReCaptcha = ({ onVerify, onExpired, onError }: ReCaptchaProps) => {
       return () => clearInterval(interval);
     }
 
+    // Cleanup: NO resetear el widget para evitar parpadeos
     return () => {
-      if (widgetIdRef.current !== null && window.grecaptcha) {
-        try {
-          window.grecaptcha.reset(widgetIdRef.current);
-        } catch (error) {
-          console.error('Error resetting reCAPTCHA:', error);
-        }
-      }
+      // Solo limpiamos cuando el componente se desmonta completamente
     };
-  }, [onVerify, onExpired, onError]);
+  }, []); // Sin dependencias - solo se ejecuta una vez
 
   const reset = () => {
     if (widgetIdRef.current !== null && window.grecaptcha) {
@@ -68,7 +69,9 @@ export const ReCaptcha = ({ onVerify, onExpired, onError }: ReCaptchaProps) => {
       <div ref={recaptchaRef} className="g-recaptcha"></div>
     </>
   );
-};
+});
+
+ReCaptcha.displayName = 'ReCaptcha';
 
 // Hook para exponer el método reset
 export const useRecaptcha = () => {

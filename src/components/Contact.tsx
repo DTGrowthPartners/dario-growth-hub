@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { CheckCircle } from 'lucide-react';
@@ -77,14 +77,15 @@ ${formData.message}`;
     }, 3000);
   };
 
-  const handleRecaptchaVerify = (token: string) => {
+  // Memoizar callbacks para evitar re-renders del ReCaptcha
+  const handleRecaptchaVerify = useCallback((token: string) => {
     setRecaptchaToken(token);
-  };
+  }, []);
 
-  const handleRecaptchaExpired = () => {
+  const handleRecaptchaExpired = useCallback(() => {
     setRecaptchaToken('');
     toast.error('El reCAPTCHA ha expirado. Por favor, vuelve a verificarlo.');
-  };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
