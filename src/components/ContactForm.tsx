@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { submitLead, saveLeadLocally } from '@/lib/submitLead';
+import { ReCaptcha } from '@/components/ReCaptcha';
 
 interface ContactFormProps {
   sourceDetail: string;
@@ -25,6 +26,7 @@ const ContactForm = ({
 }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,9 +38,16 @@ const ContactForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validar reCAPTCHA
+    if (!recaptchaToken) {
+      toast.error('Por favor, completa el reCAPTCHA');
+      return;
+    }
+
     setIsSubmitting(true);
 
-    const leadData = { ...formData, sourceDetail };
+    const leadData = { ...formData, sourceDetail, recaptchaToken };
 
     // Guardar lead localmente en JSON (localStorage)
     saveLeadLocally(leadData);
@@ -77,7 +86,17 @@ ${formData.message}`;
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', message: '' });
+      setRecaptchaToken('');
     }, 3000);
+  };
+
+  const handleRecaptchaVerify = (token: string) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaToken('');
+    toast.error('El reCAPTCHA ha expirado. Por favor, vuelve a verificarlo.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -186,10 +205,17 @@ ${formData.message}`;
                   />
                 </LabelInputContainer>
 
+                <div className="flex justify-center py-4">
+                  <ReCaptcha
+                    onVerify={handleRecaptchaVerify}
+                    onExpired={handleRecaptchaExpired}
+                  />
+                </div>
+
                 <RippleButton
                   type="submit"
                   size="lg"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !recaptchaToken}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-base"
                 >
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje →'}

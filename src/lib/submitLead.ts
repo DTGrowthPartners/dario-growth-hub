@@ -6,6 +6,7 @@ interface LeadFormData {
   company?: string;
   message?: string;
   sourceDetail?: string;
+  recaptchaToken?: string;
 }
 
 interface StoredLead extends LeadFormData {
@@ -83,6 +84,9 @@ export async function submitLead(formData: LeadFormData) {
   }
   if (formData.message?.trim()) {
     payload.message = formData.message.trim();
+  }
+  if (formData.recaptchaToken?.trim()) {
+    payload.recaptchaToken = formData.recaptchaToken.trim();
   }
 
   console.log('Enviando lead al CRM:', JSON.stringify(payload, null, 2));

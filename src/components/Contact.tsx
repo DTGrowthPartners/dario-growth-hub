@@ -8,10 +8,12 @@ import { cn } from '@/lib/utils';
 import { RippleButton, RippleButtonRipples } from '@/components/animate-ui/components/buttons/ripple';
 import { BackgroundLines } from '@/components/ui/background-lines';
 import { submitLead, saveLeadLocally } from '@/lib/submitLead';
+import { ReCaptcha } from '@/components/ReCaptcha';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,13 +25,23 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validar reCAPTCHA
+    if (!recaptchaToken) {
+      toast.error('Por favor, completa el reCAPTCHA');
+      return;
+    }
+
     setIsSubmitting(true);
 
+    // Preparar datos con token de reCAPTCHA
+    const leadData = { ...formData, recaptchaToken };
+
     // Guardar lead localmente en JSON (localStorage)
-    saveLeadLocally(formData);
+    saveLeadLocally(leadData);
 
     // Enviar datos al CRM de Os.Dt (no bloquea el flujo si falla)
-    submitLead(formData).catch((error) => {
+    submitLead(leadData).catch((error) => {
       console.error('Error enviando lead al CRM:', error);
       // No mostramos error al usuario, el lead se guarda localmente y en WhatsApp
     });
@@ -61,7 +73,17 @@ ${formData.message}`;
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', message: '' });
+      setRecaptchaToken('');
     }, 3000);
+  };
+
+  const handleRecaptchaVerify = (token: string) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaToken('');
+    toast.error('El reCAPTCHA ha expirado. Por favor, vuelve a verificarlo.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -172,10 +194,17 @@ ${formData.message}`;
                     />
                   </LabelInputContainer>
 
+                  <div className="flex justify-center py-4">
+                    <ReCaptcha
+                      onVerify={handleRecaptchaVerify}
+                      onExpired={handleRecaptchaExpired}
+                    />
+                  </div>
+
                   <RippleButton
                     type="submit"
                     size="lg"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !recaptchaToken}
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-base"
                   >
                     {isSubmitting ? 'Enviando...' : 'Enviar mensaje →'}
