@@ -82,6 +82,28 @@ const LinksPage = () => {
     }
   };
 
+  const handleDownloadVCard = () => {
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+N:Traslaviña;Dairo
+FN:Dairo Traslaviña
+TEL;TYPE=CELL:+573007189383
+EMAIL:dairo@dtgrowthpartners.com
+ADR;TYPE=WORK:;;Convention Center, Piso 3 Cartagena;;;;
+ORG:DT Growth Partners
+END:VCARD`;
+
+    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Dairo-Traslavina.vcf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] to-[#1A1A1A] text-white py-8 px-4">
       <div className="max-w-2xl mx-auto">
@@ -90,7 +112,8 @@ const LinksPage = () => {
           <img
             src={logoImage}
             alt="Dairo Traslaviña Logo"
-            className="h-8 mx-auto"
+            className="mx-auto"
+            style={{ height: 'min(2rem, 3vh)' }}
           />
         </div>
 
@@ -139,9 +162,31 @@ const LinksPage = () => {
           <p className="text-muted-foreground text-lg mb-4">
             Growth · Ads · AI
           </p>
-          <p className="text-sm text-muted-foreground max-w-md mx-auto">
+          <p className="text-sm text-muted-foreground max-w-md mx-auto mb-6">
             Ayudo a empresas a escalar con estrategia, paid media y sistemas de crecimiento.
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-2 justify-center items-center max-w-md mx-auto">
+            <a
+              href="https://api.whatsapp.com/send/?phone=573007189383&text=Hola%2C%20Dairo.%20Te%20contacto%20desde%20tu%20sitio%20web%20y%20estoy%20interesado%20en%20una%20consultor%C3%ADa%20sobre%20%5Bespecificar%20tema%5D&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/50 text-white font-medium px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 text-sm w-full sm:w-auto justify-center"
+            >
+              <FontAwesomeIcon icon={faWhatsapp} className="w-4 h-4 text-primary" />
+              Contáctame en WhatsApp
+            </a>
+            <button
+              onClick={handleDownloadVCard}
+              className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-border text-white font-medium px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/20 text-sm w-full sm:w-auto justify-center whitespace-nowrap"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Descargar contacto
+            </button>
+          </div>
         </div>
 
         {/* Main Links */}
