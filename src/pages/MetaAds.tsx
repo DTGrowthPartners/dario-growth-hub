@@ -6,6 +6,55 @@ import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Target, BarChart3, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
+const pricingPlans = [
+  {
+    name: "Plan Starter",
+    price: "$2.000.000 COP/mes",
+    period: "+ 10% de la inversión en Ads",
+    description: "Ideal para negocios que están comenzando con publicidad digital.",
+    features: [
+      "1 reunión mensual 1:1.",
+      "3 reuniones virtuales.",
+      "Configuración de Portafolio Comercial y Pruebas A/B en anuncios.",
+      "Análisis y optimización de anuncios.",
+      "Estrategia de segmentación personalizada.",
+      "Reporte mensual de resultados."
+    ],
+    popular: true
+  },
+  {
+    name: "Plan Growth",
+    price: "$3.500.000 COP/mes",
+    period: "+ 10% de la inversión en Ads",
+    description: "Para negocios en crecimiento que buscan resultados consistentes.",
+    features: [
+      "Todo lo incluido en el plan Starter.",
+      "1 reunión quincenal.",
+      "Creación de contenido publicitario optimizado.",
+      "Optimización de embudos de conversión.",
+      "Análisis de la competencia."
+    ],
+    popular: true,
+    tag: "Más Popular"
+  },
+  {
+    name: "Plan Scale",
+    price: "$5.000.000 COP/mes",
+    period: "+ 10% de la inversión en Ads",
+    description: "Para empresas que buscan escalar agresivamente.",
+    features: [
+      "Todo lo incluido en el Plan Growth.",
+      "1 reunión semanal.",
+      "Administración total de campañas.",
+      "Creación de contenido multimedia profesional.",
+      "Implementación de estrategias avanzadas de remarketing.",
+      "Consultoría estratégica 1:1."
+    ],
+    popular: true,
+    tag: "Más completo"
+  }
+];
+
 const testimonials = [
   {
     name: "Johana Zapateiro",
@@ -47,6 +96,36 @@ const testimonials = [
 const MetaAds = () => {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const plansScrollRef = useRef<HTMLDivElement>(null);
+
+  // Carrusel infinito para planes - triplicamos para scroll seamless
+  const infinitePlans = [...pricingPlans, ...pricingPlans, ...pricingPlans];
+
+  useEffect(() => {
+    const container = plansScrollRef.current;
+    if (!container || window.innerWidth >= 768) return;
+
+    // Posicionar en el set del medio al inicio
+    const cardWidth = container.scrollWidth / 3;
+    container.scrollLeft = cardWidth;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.scrollWidth / 3;
+
+      // Si llegamos al final, saltar al medio
+      if (scrollLeft >= cardWidth * 2) {
+        container.scrollLeft = cardWidth + (scrollLeft - cardWidth * 2);
+      }
+      // Si llegamos al inicio, saltar al medio
+      else if (scrollLeft <= 0) {
+        container.scrollLeft = cardWidth + scrollLeft;
+      }
+    };
+
+    container.addEventListener('scrollend', handleScroll);
+    return () => container.removeEventListener('scrollend', handleScroll);
+  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -252,55 +331,9 @@ const MetaAds = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  name: "Plan Starter",
-                  price: "$2.000.000 COP/mes",
-                  period: "+ 10% de la inversión en Ads",
-                  description: "Ideal para negocios que están comenzando con publicidad digital.",
-                  features: [
-                    "1 reunión mensual 1:1.",
-                    "3 reuniones virtuales.",
-                    "Configuración de Portafolio Comercial y Pruebas A/B en anuncios.",
-                    "Análisis y optimización de anuncios.",
-                    "Estrategia de segmentación personalizada.",
-                    "Reporte mensual de resultados."
-                  ],
-                  popular: true
-                },
-                {
-                  name: "Plan Growth",
-                  price: "$3.500.000 COP/mes",
-                  period: "+ 10% de la inversión en Ads",
-                  description: "Para negocios en crecimiento que buscan resultados consistentes.",
-                  features: [
-                    "Todo lo incluido en el plan Starter.",
-                    "1 reunión quincenal.",
-                    "Creación de contenido publicitario optimizado.",
-                    "Optimización de embudos de conversión.",
-                    "Análisis de la competencia."
-                  ],
-                  popular: true,
-                  tag: "Más Popular"
-                },
-                {
-                  name: "Plan Scale",
-                  price: "$5.000.000 COP/mes",
-                  period: "+ 10% de la inversión en Ads",
-                  description: "Para empresas que buscan escalar agresivamente.",
-                  features: [
-                    "Todo lo incluido en el Plan Growth.",
-                    "1 reunión semanal.",
-                    "Administración total de campañas.",
-                    "Creación de contenido multimedia profesional.",
-                    "Implementación de estrategias avanzadas de remarketing.",
-                    "Consultoría estratégica 1:1."
-                  ],
-                  popular: true,
-                  tag: "Más completo"
-                }
-              ].map((plan, index) => (
+            {/* Desktop: grid normal */}
+            <div className="hidden md:grid md:grid-cols-3 md:gap-8 max-w-5xl mx-auto">
+              {pricingPlans.map((plan, index) => (
                 <Card
                   key={plan.name}
                   className={`card-hover bg-card border-border/50 relative hover:border-t-4 hover:border-t-primary transition-all duration-300 animate-float ${
@@ -315,17 +348,13 @@ const MetaAds = () => {
                       </span>
                     </div>
                   )}
-                  <CardContent className="p-8 space-y-6">
+                  <CardContent className="p-8 pt-10 space-y-6 flex flex-col h-full">
                     <div className="text-center space-y-2">
                       <h3 className="text-2xl font-bold">{plan.name}</h3>
-                      <div className="space-y-1">
-                        <div className="text-4xl font-bold text-primary">{plan.price}</div>
-                        <div className="text-muted-foreground">{plan.period}</div>
-                      </div>
                       <p className="text-sm text-muted-foreground">{plan.description}</p>
                     </div>
 
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 flex-grow">
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-start space-x-3">
                           <div className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -336,9 +365,76 @@ const MetaAds = () => {
                       ))}
                     </ul>
 
+                    <div className="text-center space-y-1 pt-4 border-t border-border/50">
+                      <div className="text-4xl font-bold text-primary">{plan.price}</div>
+                      <div className="text-base text-muted-foreground">{plan.period}</div>
+                    </div>
+
                     <Button
                       className={`w-full ${plan.popular ? 'btn-primary' : 'btn-secondary'}`}
                       size="lg"
+                      onClick={() => {
+                        const messages = {
+                          'Plan Starter': 'Hola Dairo, estoy interesado en el Plan Starter para comenzar con publicidad digital',
+                          'Plan Growth': 'Hola Dairo, quiero el Plan Growth para hacer crecer mi negocio de forma consistente',
+                          'Plan Scale': 'Hola Dairo, necesito el Plan Scale para escalar agresivamente mi negocio'
+                        };
+                        const message = encodeURIComponent(messages[plan.name as keyof typeof messages]);
+                        window.open(`https://wa.me/573007189383?text=${message}`, '_blank');
+                      }}
+                    >
+                      Comenzar Ahora
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Mobile: carrusel infinito */}
+            <div
+              ref={plansScrollRef}
+              className="flex md:hidden overflow-x-auto gap-4 pb-4 pt-4 px-6 snap-x snap-mandatory scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {infinitePlans.map((plan, index) => (
+                <Card
+                  key={`${plan.name}-${index}`}
+                  className={`card-hover bg-card border-border/50 relative transition-all duration-300 flex-shrink-0 w-[calc(100vw-3.5rem)] max-w-[340px] snap-center ${
+                    plan.popular ? 'ring-2 ring-primary shadow-lg' : ''
+                  }`}
+                >
+                  {plan.popular && plan.tag && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                        {plan.tag}
+                      </span>
+                    </div>
+                  )}
+                  <CardContent className="p-5 pt-8 space-y-4 flex flex-col h-full">
+                    <div className="text-center space-y-1">
+                      <h3 className="text-xl font-bold">{plan.name}</h3>
+                      <p className="text-xs text-muted-foreground">{plan.description}</p>
+                    </div>
+
+                    <ul className="space-y-2 flex-grow">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start space-x-2">
+                          <div className="w-4 h-4 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                          </div>
+                          <span className="text-xs">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="text-center space-y-1 pt-3 border-t border-border/50">
+                      <div className="text-2xl font-bold text-primary">{plan.price}</div>
+                      <div className="text-xs text-muted-foreground">{plan.period}</div>
+                    </div>
+
+                    <Button
+                      className={`w-full ${plan.popular ? 'btn-primary' : 'btn-secondary'}`}
+                      size="default"
                       onClick={() => {
                         const messages = {
                           'Plan Starter': 'Hola Dairo, estoy interesado en el Plan Starter para comenzar con publicidad digital',
